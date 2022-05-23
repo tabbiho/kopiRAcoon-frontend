@@ -15,3 +15,6 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 INITIAL SETUP DONE!
+
+===== PROJECT UPDATES =====
+240522 0240: First draft of coffee logic done
