@@ -1,55 +1,51 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import AppContext from '../functions.jsx';
 
 function Combination() {
-  const initialCoffeeState = {
-    coffee: 'Kopi',
-    milk: 'O',
-    sugar: 'None',
-    concentration: 'Poh',
-    ice: 'None',
-  };
-  const [coffee, setCoffee] = useState(initialCoffeeState);
-  const [coffeePercent, setCoffeePercent] = useState(60);
-  const [milk, setMilk] = useState({ evapMilk: false, condMilk: false });
+  const { appState, dispatch, keywords } = useContext(AppContext);
 
-  const coffeeDisplay = Object.values(coffee)
-    .filter((x) => x !== 'None')
-    .join(' ');
+  let coffeeConcentration = '';
+  if (appState.coffee === 100) {
+    coffeeConcentration = 'Di Loh';
+  } else if (appState.coffee >= 90) {
+    coffeeConcentration = 'Gao';
+  } else if (appState.coffee >= 60 && appState.coffee < 70) {
+    coffeeConcentration = 'Poh';
+  } else {
+    coffeeConcentration = '';
+  }
 
-  const updateCoffeeConcentration = (concentration) => {
-    let x;
-    switch (Number(concentration)) {
-      case 60:
-        x = 'Poh';
-        break;
-      case 70:
-      case 80:
-        x = 'None';
-        break;
-      case 90:
-        x = 'Gao';
-        break;
-      case 100:
-        x = 'Di Loh';
-        break;
-      default:
-        x = 'None';
-    }
-    setCoffee((prev) => ({ ...prev, concentration: x }));
-  };
+  let coffeeMilk = '';
+  const { evapMilk, condMilk } = appState.milk;
+  if (evapMilk && condMilk) {
+    coffeeMilk = 'Gah C';
+  } else if (!evapMilk && !condMilk) {
+    coffeeMilk = 'O';
+  } else if (evapMilk) {
+    coffeeMilk = 'C';
+  } else if (condMilk) {
+    coffeeMilk = '';
+  }
 
-  const updateMilk = (update) => {
-    const currentMilk = { ...milk, ...update };
-    if (currentMilk.evapMilk && currentMilk.condMilk) {
-      setCoffee((prev) => ({ ...prev, milk: 'Gah C' }));
-    } else if (!currentMilk.evapMilk && !currentMilk.condMilk) {
-      setCoffee((prev) => ({ ...prev, milk: 'O' }));
-    } else if (currentMilk.evapMilk) {
-      setCoffee((prev) => ({ ...prev, milk: 'C' }));
-    } else if (currentMilk.condMilk) {
-      setCoffee((prev) => ({ ...prev, milk: 'None' }));
-    }
-  };
+  let coffeeIce = '';
+  if (appState.ice) {
+    coffeeIce = 'Peng';
+  } else {
+    coffeeIce = '';
+  }
+
+  let coffeeSugar = '';
+  if (appState.sugar === 'None') {
+    coffeeSugar = 'Kosong';
+  } else if (appState.sugar === 'Less') {
+    coffeeSugar = 'Siu Dai';
+  } else if (appState.sugar === 'Regular') {
+    coffeeSugar = '';
+  } else if (appState.sugar === 'More') {
+    coffeeSugar = 'Gah Dai';
+  }
+
+  const coffeeDisplay = `Kopi ${coffeeMilk} ${coffeeSugar} ${coffeeConcentration} ${coffeeIce}`;
 
   return (
     <>
@@ -57,14 +53,16 @@ function Combination() {
       <div className="btn-group">
         <button
           type="button"
-          onClick={() => setCoffee((prev) => ({ ...prev, ice: 'None' }))}
+          onClick={() => {
+            dispatch({ type: keywords.UPDATE_DIAGRAM_ICE, payload: false }); }}
         >
           None
 
         </button>
         <button
           type="button"
-          onClick={() => setCoffee((prev) => ({ ...prev, ice: 'Peng' }))}
+          onClick={() => {
+            dispatch({ type: keywords.UPDATE_DIAGRAM_ICE, payload: true }); }}
         >
           Ice
         </button>
@@ -73,58 +71,42 @@ function Combination() {
       <div className="btn-group">
         <button
           type="button"
-          onClick={() => setCoffee((prev) => ({ ...prev, sugar: 'Kosong' }))}
+          onClick={() => {
+            dispatch({ type: keywords.UPDATE_DIAGRAM_SUGAR, payload: 'None' }); }}
         >
           None
         </button>
         <button
           type="button"
-          onClick={() => setCoffee((prev) => ({ ...prev, sugar: 'Siu Dai' }))}
+          onClick={() => {
+            dispatch({ type: keywords.UPDATE_DIAGRAM_SUGAR, payload: 'Less' }); }}
         >
           Less
         </button>
         <button
           type="button"
-          onClick={() => setCoffee((prev) => ({ ...prev, sugar: 'None' }))}
+          onClick={() => {
+            dispatch({ type: keywords.UPDATE_DIAGRAM_SUGAR, payload: 'Regular' }); }}
         >
           Regular
         </button>
         <button
           type="button"
-          onClick={() => setCoffee((prev) => ({ ...prev, sugar: 'Gah Dai' }))}
+          onClick={() => {
+            dispatch({ type: keywords.UPDATE_DIAGRAM_SUGAR, payload: 'More' }); }}
         >
           More
         </button>
       </div>
-      <div className="slidecontainer">
-        Coffee
-        {' '}
-        {coffeePercent}
-        %
-        <input
-          type="range"
-          min="60"
-          max="100"
-          step="10"
-          onChange={(e) => {
-            setCoffeePercent(e.target.value);
-            updateCoffeeConcentration(e.target.value);
-          }}
-        />
-      </div>
-      <div className="slidecontainer">
-        Water
-        {' '}
-        {100 - coffeePercent}
-        %
-        <input type="range" min="0" max="40" step="10" value={100 - coffeePercent} />
-      </div>
       <div>
         <input
           type="checkbox"
+          defaultChecked={appState.milk.condMilk}
           onChange={(e) => {
-            setMilk((prev) => ({ ...prev, condMilk: e.target.checked }));
-            updateMilk({ condMilk: e.target.checked }); }}
+            dispatch({
+              type: keywords.UPDATE_DIAGRAM_MILK,
+              payload: { ...appState.milk, condMilk: e.target.checked },
+            }); }}
         />
         {' '}
         Condensed Milk
@@ -132,9 +114,12 @@ function Combination() {
       <div>
         <input
           type="checkbox"
+          defaultChecked={appState.milk.evapMilk}
           onChange={(e) => {
-            setMilk((prev) => ({ ...prev, evapMilk: e.target.checked }));
-            updateMilk({ evapMilk: e.target.checked }); }}
+            dispatch({
+              type: keywords.UPDATE_DIAGRAM_MILK,
+              payload: { ...appState.milk, evapMilk: e.target.checked },
+            }); }}
         />
         {' '}
         Evaporated Milk

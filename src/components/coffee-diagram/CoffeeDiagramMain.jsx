@@ -1,36 +1,34 @@
-import React, { useState, useRef, useEffect } from 'react';
+/* eslint-disable max-len */
+import React, { useContext } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import AppContext from '../../functions.jsx';
 
 function coffeeDiagramMain() {
-  const initialCoffeeState = {
-    coffeeLayerProportion: 0,
-    waterLayerProportion: 0,
-  };
+  const { appState, dispatch, keywords } = useContext(AppContext);
+  const coffeeLayerProportion = appState.coffee;
+  const waterLayerProportion = 100 - appState.coffee;
 
   // sugar - none, less, normal, more
 
   // milk - condensed or evaporated milk
 
-  const [coffeeProportions, setProportion] = useState(initialCoffeeState);
-
-  const handleMilkLayer = (e) => {
-    const prevState = { ...coffeeProportions };
-    prevState.milkLayerProportion = e.target.value;
-    setProportion(prevState);
+  const handleCoffeeLayer = (e) => {
+    if (e.target.value >= 60 && e.target.value <= 100) {
+      dispatch({ type: keywords.UPDATE_DIAGRAM_COFFEE, payload: e.target.value });
+    }
   };
 
   return (
     <>
       <h1> Coffee</h1>
       <div className="coffee-wrapper">
-        <div className="milk-layer" style={{ height: `${coffeeProportions.milkLayerProportion}%` }}>milk</div>
-        <div className="coffee-layer" style={{ height: `${coffeeProportions.coffeeLayerProportion}%` }}>coffee</div>
-        <div className="water-layer" style={{ height: `${coffeeProportions.waterLayerProportion}%` }}>water</div>
+        {/* <div className="milk-layer" style={{ height: `${coffeeProportions.milkLayerProportion}%` }}> milk </div> */}
+        <div className="water-layer" style={{ height: `${waterLayerProportion}%` }}>water</div>
+        <div className="coffee-layer" style={{ height: `${coffeeLayerProportion}%` }}>coffee</div>
       </div>
-      {/* for exmaple to show only --> need to remove this */}
       <Box width={300}>
-        <Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" onChange={handleMilkLayer} value={coffeeProportions.milkLayerProportion} />
+        <Slider aria-label="Default" valueLabelDisplay="auto" onChange={handleCoffeeLayer} value={coffeeLayerProportion} />
       </Box>
     </>
   );
