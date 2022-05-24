@@ -59,4 +59,16 @@
   border: solid black 2px;
   height: 20vh;
   padding: 1vh;
+  margin-bottom: 0;
+}
+
+.table-div {
+  width: 25vh;
+  background-color: #b9742e;
+  height: 1vh;
+  border-radius: 3px;
+}
+
+.ice-image {
+  width: 5vh;
 }
