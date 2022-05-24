@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import './App.css';
+
 import CoffeeDiagramMain from './components/coffee-diagram/CoffeeDiagramMain.jsx';
 import Combination from './components/Combination.jsx';
 
@@ -54,7 +55,6 @@ function App() {
         <Combination />
       </AppContext.Provider>
     </div>
-
   );
 }
 
