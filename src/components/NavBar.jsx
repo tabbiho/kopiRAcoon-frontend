@@ -19,18 +19,13 @@ function NavBar() {
           setValue(newValue);
         }}
       >
-        <Link to="/makeCoffee">
-          <BottomNavigationAction label="Make Coffee" icon={<LocalCafeIcon />} />
-        </Link>
-        <Link to="/">
-          <BottomNavigationAction label="Home" icon={<HomeIcon />} />
-        </Link>
-        <Link to="/map">
-          <BottomNavigationAction label="Map" icon={<PinDropIcon />} />
-        </Link>
-        <Link to="/logout">
-          <BottomNavigationAction label="Logout" icon={<LogoutIcon />} />
-        </Link>
+        <BottomNavigationAction className="nav-bar-icon" label="Make Coffee" icon={<LocalCafeIcon />} component={Link} to="/makeCoffee" />
+
+        <BottomNavigationAction className="nav-bar-icon" label="Home" icon={<HomeIcon />} component={Link} to="/" />
+
+        <BottomNavigationAction className="nav-bar-icon" label="Map" icon={<PinDropIcon />} component={Link} to="/map" />
+
+        <BottomNavigationAction className="nav-bar-icon" label="Logout" icon={<LogoutIcon />} component={Link} to="/logout" />
       </BottomNavigation>
     </Box>
   );
