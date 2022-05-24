@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.milk-layer {
+  width: 10vh;
+  height: 20%;
+  background-color: red;
+}
+.coffee-layer {
+  width: 10vh;
+  height: 30%;
+  background-color: blue;
+}
+
+.water-layer {
+  width: 10vh;
+  height: 50%;
+  background-color: green;
+}
+
+.coffee-wrapper {
+  width: 10vh;
+  border: solid black 2px;
+  height: 20vh;
+  padding: 1vh;
+}

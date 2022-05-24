@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import CoffeeDiagramMain from './components/coffee-diagram/CoffeeDiagramMain.jsx';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header" />
+      <CoffeeDiagramMain />
     </div>
   );
 }
