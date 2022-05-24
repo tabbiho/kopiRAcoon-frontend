@@ -20,3 +20,4 @@ INITIAL SETUP DONE!
 240522 0240: First draft of coffee logic done
 240522 0945: Split coffee logic into its own component
 240522 0945: Diagram logic settled --> water and coffee proportion
+240522 1815: Combined coffee logic with diagram logic
