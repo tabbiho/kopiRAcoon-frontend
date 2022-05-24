@@ -21,3 +21,6 @@ INITIAL SETUP DONE!
 240522 0945: Split coffee logic into its own component
 240522 0945: Diagram logic settled --> water and coffee proportion
 240522 1815: Combined coffee logic with diagram logic
+250522 0150: Added basic animation using framer motion
+250522 0150: Added routes on app.jsx, combined combination and coffee diagram into make coffee component and moved combination to coffee-components folder.
+250522 0150: Added navbar
