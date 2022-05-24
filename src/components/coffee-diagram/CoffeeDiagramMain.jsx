@@ -9,10 +9,6 @@ function coffeeDiagramMain() {
   const coffeeLayerProportion = appState.coffee;
   const waterLayerProportion = 100 - appState.coffee;
 
-  // sugar - none, less, normal, more
-
-  // milk - condensed or evaporated milk
-
   const handleCoffeeLayer = (e) => {
     if (e.target.value >= 60 && e.target.value <= 100) {
       dispatch({ type: keywords.UPDATE_DIAGRAM_COFFEE, payload: e.target.value });
@@ -23,7 +19,6 @@ function coffeeDiagramMain() {
     <>
       <h1> Coffee</h1>
       <div className="coffee-wrapper">
-        {/* <div className="milk-layer" style={{ height: `${coffeeProportions.milkLayerProportion}%` }}> milk </div> */}
         <div className="water-layer" style={{ height: `${waterLayerProportion}%` }}>water</div>
         <div className="coffee-layer" style={{ height: `${coffeeLayerProportion}%` }}>coffee</div>
       </div>
