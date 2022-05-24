@@ -1,9 +1,11 @@
 import React, { useReducer } from 'react';
 import './App.css';
-
-import CoffeeDiagramMain from './components/coffee-diagram/CoffeeDiagramMain.jsx';
-import Combination from './components/Combination.jsx';
-
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import MakeCoffee from './components/MakeCoffee.jsx';
 import AppContext from './functions.jsx';
 
 function App() {
@@ -49,12 +51,18 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <BrowserRouter>
       <AppContext.Provider value={contextState}>
-        <CoffeeDiagramMain />
-        <Combination />
+        <Routes>
+          <Route path="/makeCoffee" element={<MakeCoffee />} />
+          <Route path="/favorites" />
+          <Route path="/" />
+          <Route path="/map" />
+          <Route path="/login" />
+          <Route path="/logout" />
+        </Routes>
       </AppContext.Provider>
-    </div>
+    </BrowserRouter>
   );
 }
 

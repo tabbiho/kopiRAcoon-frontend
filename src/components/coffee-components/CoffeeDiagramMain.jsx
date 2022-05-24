@@ -5,7 +5,7 @@ import Slider from '@mui/material/Slider';
 import { motion, AnimatePresence } from 'framer-motion';
 import AppContext from '../../functions.jsx';
 
-function coffeeDiagramMain() {
+function CoffeeDiagramMain() {
   const { appState, dispatch, keywords } = useContext(AppContext);
   const coffeeLayerProportion = appState.coffee;
   const waterLayerProportion = 100 - appState.coffee;
@@ -109,4 +109,4 @@ function coffeeDiagramMain() {
   );
 }
 
-export default coffeeDiagramMain;
+export default CoffeeDiagramMain;

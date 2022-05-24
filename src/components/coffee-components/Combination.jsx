@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import AppContext from '../functions.jsx';
+import AppContext from '../../functions.jsx';
 
 function Combination() {
   const { appState, dispatch, keywords } = useContext(AppContext);
