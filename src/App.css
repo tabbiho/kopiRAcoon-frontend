@@ -71,4 +71,11 @@
 
 .ice-image {
   width: 5vh;
+  height: 5%;
+}
+
+.milk-layer {
+  width: 10vh;
+  height: 5%;
+  background-color: #61dafb;
 }
