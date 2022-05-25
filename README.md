@@ -24,3 +24,4 @@ INITIAL SETUP DONE!
 250522 0150: Added basic animation using framer motion
 250522 0150: Added routes on app.jsx, combined combination and coffee diagram into make coffee component and moved combination to coffee-components folder.
 250522 0150: Added navbar
+250222 1815: Split CoffeeName.jsx as a HOC to intepret JSON of ingredients into Kopi Name
