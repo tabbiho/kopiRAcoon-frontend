@@ -10,6 +10,8 @@ function CoffeeDiagramMain() {
   const coffeeLayerProportion = appState.coffee;
   const waterLayerProportion = 100 - appState.coffee;
 
+  const { UPDATE_DIAGRAM_COFFEE } = keywords;
+
   const coffeeWrapperVariant = {
     hidden: {
       y: '-100vh',
@@ -44,7 +46,7 @@ function CoffeeDiagramMain() {
 
   const handleCoffeeLayer = (e) => {
     if (e.target.value >= 60 && e.target.value <= 100) {
-      dispatch({ type: keywords.UPDATE_DIAGRAM_COFFEE, payload: e.target.value });
+      dispatch({ type: UPDATE_DIAGRAM_COFFEE, payload: e.target.value });
     }
   };
 
