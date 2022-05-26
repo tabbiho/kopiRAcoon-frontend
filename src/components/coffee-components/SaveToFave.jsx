@@ -15,6 +15,7 @@ function SaveToFave() {
     if (favorite) {
       const postFavoriteReq = async () => {
         try {
+          // eslint-disable-next-line no-unused-vars
           const addFavorites = await axios.post(`${BACKEND_URL}/addFavorites`, appState);
         }
         catch (err) {
@@ -25,6 +26,7 @@ function SaveToFave() {
     }
     const deleteFavoriteReq = async () => {
       try {
+        // eslint-disable-next-line no-unused-vars
         const undoFavorite = await axios.post(`${BACKEND_URL}/undoFave`, appState);
       }
       catch (err) {

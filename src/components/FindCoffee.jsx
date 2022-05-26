@@ -1,5 +1,4 @@
 import React from 'react';
-
 import CoffeeMap from './map-components/CoffeeMap.jsx';
 import NavBar from './NavBar.jsx';
 

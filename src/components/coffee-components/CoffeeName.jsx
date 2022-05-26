@@ -48,7 +48,7 @@ function CoffeeName(kopiObj) {
 
   const coffeeDisplay = `Kopi ${coffeeMilk} ${coffeeSugar} ${coffeeConcentration} ${coffeeIce}`;
   return (
-    <span>{coffeeDisplay}</span>
+    <div>{coffeeDisplay}</div>
   );
 }
 

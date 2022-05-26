@@ -8,6 +8,7 @@ import {
 import MakeCoffee from './components/MakeCoffee.jsx';
 import FindCoffee from './components/FindCoffee.jsx';
 import AppContext from './functions.jsx';
+import FavoritesDisplay from './components/FavoritesDisplay.jsx';
 
 function App() {
   const initialAppState = {
@@ -57,7 +58,7 @@ function App() {
         <Routes>
           <Route path="/makeCoffee" element={<MakeCoffee />} />
           <Route path="/findCoffee" element={<FindCoffee />} />
-          <Route path="/favorites" />
+          <Route path="/favorites" element={<FavoritesDisplay />} />
           <Route path="/map" />
           <Route path="/login" />
           <Route path="/logout" />
