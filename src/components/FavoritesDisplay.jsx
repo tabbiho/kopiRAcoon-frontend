@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CoffeeName from './coffee-components/CoffeeName.jsx';
 import NavBar from './NavBar.jsx';
+import Loader from './Loader.jsx';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
 
@@ -19,6 +20,7 @@ function FavoritesDisplay() {
   console.log(favoritesList);
   return (
     <>
+      <Loader />
       <h1>Show all favorites</h1>
       {favoritesList.map((favCoffee) => CoffeeName(favCoffee))}
       <NavBar />

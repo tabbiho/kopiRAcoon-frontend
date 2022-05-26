@@ -83,3 +83,31 @@
 .favorite-icon {
   color: #d5a454;
 }
+
+.logo-icon-wrapper {
+  position: relative;
+  width: 40vh;
+  border: 1px solid black;
+}
+
+.coffee-cup-wrapper {
+  width: 20%;
+  position: absolute;
+  top: 52%;
+  left: 38%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-icon-wrapper > img {
+  width: 100%;
+}
+.coffee-cup img {
+  width: 100%;
+}
+
+.smoke-wrapper img {
+  width: 1.2vh;
+}
