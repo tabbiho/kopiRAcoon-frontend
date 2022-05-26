@@ -6,6 +6,7 @@ import {
   Route,
 } from 'react-router-dom';
 import MakeCoffee from './components/MakeCoffee.jsx';
+import FindCoffee from './components/FindCoffee.jsx';
 import AppContext from './functions.jsx';
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
       <AppContext.Provider value={contextState}>
         <Routes>
           <Route path="/makeCoffee" element={<MakeCoffee />} />
+          <Route path="/findCoffee" element={<FindCoffee />} />
           <Route path="/favorites" />
           <Route path="/" />
           <Route path="/map" />
