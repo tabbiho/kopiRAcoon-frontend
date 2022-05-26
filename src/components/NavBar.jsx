@@ -24,6 +24,8 @@ function NavBar() {
         <BottomNavigationAction className="nav-bar-icon" label="Home" icon={<HomeIcon />} component={Link} to="/" />
 
         <BottomNavigationAction className="nav-bar-icon" label="Map" icon={<PinDropIcon />} component={Link} to="/map" />
+        
+        <BottomNavigationAction className="nav-bar-icon" label="Favorite" icon={<PinDropIcon />} component={Link} to="/map" />
 
         <BottomNavigationAction className="nav-bar-icon" label="Logout" icon={<LogoutIcon />} component={Link} to="/logout" />
       </BottomNavigation>
