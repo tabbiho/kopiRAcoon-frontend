@@ -10,17 +10,12 @@ function SaveToFave() {
   const { appState } = useContext(AppContext);
   console.log(appState);
 
-  // eslint-disable-next-line max-len
-  // need to get the coffeeId to update the join table--> fake data, coffeeID is 1, userId is 1 (should retrieve from cookies)
   useEffect(() => {
     // if favourite is true, do a post request to backend to save favorite
     if (favorite) {
       const postFavoriteReq = async () => {
         try {
-          const coffeeData = {
-            coffeeId: 1,
-          };
-          const addFavorites = await axios.post(`${BACKEND_URL}/addFavorites`, coffeeData);
+          const addFavorites = await axios.post(`${BACKEND_URL}/addFavorites`, appState);
         }
         catch (err) {
           console.log(err);
@@ -30,10 +25,7 @@ function SaveToFave() {
     }
     const deleteFavoriteReq = async () => {
       try {
-        const removeFaveData = {
-          coffeeId: 1,
-        };
-        const undoFavorite = await axios.delete(`${BACKEND_URL}/undoFave`, removeFaveData);
+        const undoFavorite = await axios.post(`${BACKEND_URL}/undoFave`, appState);
       }
       catch (err) {
         console.log(err);
