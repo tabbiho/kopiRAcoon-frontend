@@ -58,10 +58,10 @@ function App() {
           <Route path="/makeCoffee" element={<MakeCoffee />} />
           <Route path="/findCoffee" element={<FindCoffee />} />
           <Route path="/favorites" />
-          <Route path="/" />
           <Route path="/map" />
           <Route path="/login" />
           <Route path="/logout" />
+          <Route path="/profile" />
         </Routes>
       </AppContext.Provider>
     </BrowserRouter>

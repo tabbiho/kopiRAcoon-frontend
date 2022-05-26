@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import HomeIcon from '@mui/icons-material/Home';
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LocalCafeIcon from '@mui/icons-material/LocalCafe';
+import StarIcon from '@mui/icons-material/Star';
+import FaceIcon from '@mui/icons-material/Face';
 
 function NavBar() {
   const [value, setValue] = useState(0);
@@ -19,19 +20,16 @@ function NavBar() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction className="nav-bar-icon" label="Make Coffee" icon={<LocalCafeIcon />} component={Link} to="/makeCoffee" />
+        <BottomNavigationAction className="nav-bar-icon" label="Profile" icon={<FaceIcon />} component={Link} to="/profile" />
 
         <BottomNavigationAction className="nav-bar-icon" label="Find Coffee" icon={<PinDropIcon />} component={Link} to="/findCoffee" />
 
-<<<<<<< HEAD
-        <BottomNavigationAction className="nav-bar-icon" label="Map" icon={<PinDropIcon />} component={Link} to="/map" />
-        
-        <BottomNavigationAction className="nav-bar-icon" label="Favorite" icon={<PinDropIcon />} component={Link} to="/map" />
-=======
-        <BottomNavigationAction className="nav-bar-icon" label="Home" icon={<HomeIcon />} component={Link} to="/" />
->>>>>>> main
+        <BottomNavigationAction className="nav-bar-icon" label="Make Coffee" icon={<LocalCafeIcon />} component={Link} to="/makeCoffee" />
+
+        <BottomNavigationAction className="nav-bar-icon" label="Favorites" icon={<StarIcon />} component={Link} to="/favorites" />
 
         <BottomNavigationAction className="nav-bar-icon" label="Logout" icon={<LogoutIcon />} component={Link} to="/logout" />
+
       </BottomNavigation>
     </Box>
   );
