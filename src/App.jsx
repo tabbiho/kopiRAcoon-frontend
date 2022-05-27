@@ -5,12 +5,19 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+import axios from 'axios';
 import MakeCoffee from './components/MakeCoffee.jsx';
 import FindCoffee from './components/FindCoffee.jsx';
 import AppContext from './functions.jsx';
 import FavoritesDisplay from './components/FavoritesDisplay.jsx';
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
+
+axios.defaults.withCredentials = true;
 
 function App() {
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
+
   const initialAppState = {
     coffee: 70,
     milk: { evapMilk: false, condMilk: true },
@@ -42,6 +49,7 @@ function App() {
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const contextState = {
+    BACKEND_URL,
     appState,
     dispatch,
     keywords: {
@@ -60,7 +68,8 @@ function App() {
           <Route path="/findCoffee" element={<FindCoffee />} />
           <Route path="/favorites" element={<FavoritesDisplay />} />
           <Route path="/map" />
-          <Route path="/login" />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/logout" />
           <Route path="/profile" />
         </Routes>
