@@ -12,7 +12,8 @@ import FaceIcon from '@mui/icons-material/Face';
 function NavBar() {
   const [value, setValue] = useState(0);
   return (
-    <Box sx={{ width: 500 }}>
+
+    <Box className="nav-bar-main-wrapper">
       <BottomNavigation
         showLabels
         value={value}
@@ -20,18 +21,19 @@ function NavBar() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction className="nav-bar-icon" label="Profile" icon={<FaceIcon />} component={Link} to="/profile" />
+        <BottomNavigationAction className="nav-bar-icon" icon={<FaceIcon />} component={Link} to="/profile" />
 
-        <BottomNavigationAction className="nav-bar-icon" label="Find Coffee" icon={<PinDropIcon />} component={Link} to="/findCoffee" />
+        <BottomNavigationAction className="nav-bar-icon" icon={<PinDropIcon />} component={Link} to="/findCoffee" />
 
-        <BottomNavigationAction className="nav-bar-icon" label="Make Coffee" icon={<LocalCafeIcon />} component={Link} to="/makeCoffee" />
+        <BottomNavigationAction className="nav-bar-icon" icon={<LocalCafeIcon />} component={Link} to="/makeCoffee" />
 
-        <BottomNavigationAction className="nav-bar-icon" label="Favorites" icon={<StarIcon />} component={Link} to="/favorites" />
+        <BottomNavigationAction className="nav-bar-icon" icon={<StarIcon />} component={Link} to="/favorites" />
 
-        <BottomNavigationAction className="nav-bar-icon" label="Logout" icon={<LogoutIcon />} component={Link} to="/logout" />
+        <BottomNavigationAction className="nav-bar-icon" icon={<LogoutIcon />} component={Link} to="/logout" />
 
       </BottomNavigation>
     </Box>
+
   );
 }
 
