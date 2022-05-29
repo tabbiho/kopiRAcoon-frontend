@@ -27,3 +27,4 @@ INITIAL SETUP DONE!
 250522 1815: Split CoffeeName.jsx as a HOC to intepret JSON of ingredients into Kopi Name
 260522 1000: Added map feature
 260522 1700: Modified various componenents as a single json. Added favorites display
+270522 1000: Login & register feature done

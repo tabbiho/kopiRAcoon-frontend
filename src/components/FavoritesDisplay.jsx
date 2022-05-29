@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Container } from '@mui/material';
+import AppContext from '../functions.jsx';
 import CoffeeName from './coffee-components/CoffeeName.jsx';
 import NavBar from './NavBar.jsx';
 import Loader from './Loader.jsx';
 import CreateNote from './favorites-notes-components/CreateNote.jsx';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
-
 function FavoritesDisplay() {
   const [favoritesList, setFavoritesList] = useState([]);
+  const { BACKEND_URL } = useContext(AppContext);
 
   useEffect(() => {
     const findFavorites = async () => {
-      // eslint-disable-next-line no-unused-vars
       const allFavList = await axios.get(`${BACKEND_URL}/allFavorites`);
       console.log(allFavList.data.allCoffeeData);
       setFavoritesList(allFavList.data.allCoffeeData);
