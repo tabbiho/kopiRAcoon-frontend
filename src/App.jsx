@@ -12,6 +12,8 @@ import AppContext from './functions.jsx';
 import FavoritesDisplay from './components/FavoritesDisplay.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
+import Logout from './components/Logout.jsx';
+import Profile from './components/Profile.jsx';
 
 axios.defaults.withCredentials = true;
 
@@ -50,6 +52,7 @@ function App() {
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const contextState = {
     BACKEND_URL,
+    // TRANSLATE_KEY,
     appState,
     dispatch,
     keywords: {
@@ -67,11 +70,10 @@ function App() {
           <Route path="/makeCoffee" element={<MakeCoffee />} />
           <Route path="/findCoffee" element={<FindCoffee />} />
           <Route path="/favorites" element={<FavoritesDisplay />} />
-          <Route path="/map" />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/logout" />
-          <Route path="/profile" />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </AppContext.Provider>
     </BrowserRouter>
