@@ -4,13 +4,14 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { motion, AnimatePresence } from 'framer-motion';
 import AppContext from '../../functions.jsx';
+import typoStyles from '../Typography.module.css';
 
 function CoffeeDiagramMain() {
   const { appState, dispatch, keywords } = useContext(AppContext);
   const coffeeLayerProportion = appState.coffee;
   const waterLayerProportion = 100 - appState.coffee;
 
-  const { UPDATE_DIAGRAM_COFFEE } = keywords;
+  const { UPDATE_DIAGRAM_COFFEE, SET_FAVORITE } = keywords;
 
   const coffeeWrapperVariant = {
     hidden: {
@@ -45,6 +46,7 @@ function CoffeeDiagramMain() {
   };
 
   const handleCoffeeLayer = (e) => {
+    dispatch({ type: SET_FAVORITE, payload: false });
     if (e.target.value >= 60 && e.target.value <= 100) {
       dispatch({ type: UPDATE_DIAGRAM_COFFEE, payload: e.target.value });
     }
@@ -54,16 +56,27 @@ function CoffeeDiagramMain() {
 
   return (
     <>
-      <h1> Coffee</h1>
-
+      <div className="small-logo-wrapper">
+        <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
+      </div>
+      <div className={typoStyles['title-main']}> Make your own Coffee</div>
       <motion.div
-        className="coffee-wrapper"
+        className="coffee-main-page-wrapper"
         variants={coffeeWrapperVariant}
         initial="hidden"
         animate="visible"
       >
-        <AnimatePresence>
-          {appState.ice
+        <div id="coffee-img-wrapper">
+          <img
+            src="../../images/logo-icon/coffeecup-outline.png"
+            alt="coffee-cup-outline"
+            id="coffee-cup-outline"
+          />
+        </div>
+        <div className="all-layers-wrapper">
+          <AnimatePresence>
+
+            {appState.ice
           && (
             <motion.div
               initial={{ y: -30, opacity: 0 }}
@@ -76,37 +89,39 @@ function CoffeeDiagramMain() {
               ICE IMAGE
             </motion.div>
           )}
-          { (appState.milk.evapMilk || appState.milk.condMilk)
+            { (appState.milk.evapMilk || appState.milk.condMilk)
           && (
           <motion.div
             variants={layerVariant}
             className="milk-layer"
             exit={{ opacity: 0, transition: 0.1 }}
-          >
-            {' '}
-            milk layer
-          </motion.div>
+          />
           ) }
-        </AnimatePresence>
-        <motion.div
-          className="water-layer"
-          style={{ height: `${(waterLayerProportion / 100) * 90}%` }}
-          variants={layerVariant}
-        >
-          water
-        </motion.div>
-        <motion.div
-          className="coffee-layer"
-          style={{ height: `${(coffeeLayerProportion / 100) * 90}%` }}
-          variants={layerVariant}
-        >
-          coffee
-        </motion.div>
+          </AnimatePresence>
+          <motion.div
+            className="water-layer"
+            style={{ height: `${(waterLayerProportion / 100) * 90}%` }}
+            variants={layerVariant}
+          >
+            water
+          </motion.div>
+          <motion.div
+            className="coffee-layer"
+            style={{ height: `${(coffeeLayerProportion / 100) * 90}%` }}
+            variants={layerVariant}
+          >
+            coffee
+          </motion.div>
+        </div>
       </motion.div>
-      <div className="table-div"> </div>
-      <Box width={300}>
-        <Slider aria-label="Default" valueLabelDisplay="auto" onChange={handleCoffeeLayer} value={coffeeLayerProportion} />
+      <Box width={300} sx={{ mx: 'auto' }}>
+        <Slider aria-label="Default" valueLabelDisplay="auto" onChange={handleCoffeeLayer} value={coffeeLayerProportion} id="proportion-slider" />
       </Box>
+      <Box width={300} sx={{ mx: 'auto' }} className="slider-label">
+        <div> Coffee</div>
+        <div> Water</div>
+      </Box>
+
     </>
   );
 }

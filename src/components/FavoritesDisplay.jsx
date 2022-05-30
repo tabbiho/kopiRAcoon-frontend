@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
+import { Container } from '@mui/material';
 import AppContext from '../functions.jsx';
 import CoffeeName from './coffee-components/CoffeeName.jsx';
 import NavBar from './NavBar.jsx';
+import Loader from './Loader.jsx';
+import CreateNote from './favorites-notes-components/CreateNote.jsx';
 
 function FavoritesDisplay() {
   const [favoritesList, setFavoritesList] = useState([]);
@@ -11,6 +14,7 @@ function FavoritesDisplay() {
   useEffect(() => {
     const findFavorites = async () => {
       const allFavList = await axios.get(`${BACKEND_URL}/allFavorites`);
+      console.log(allFavList.data.allCoffeeData);
       setFavoritesList(allFavList.data.allCoffeeData);
     };
     findFavorites();
@@ -19,8 +23,18 @@ function FavoritesDisplay() {
   console.log(favoritesList);
   return (
     <>
-      <h1>Show all favorites</h1>
-      {favoritesList.map((favCoffee) => CoffeeName(favCoffee))}
+      <Container className="main-container-wrapper">
+        <Loader />
+        <h1>Show all favorites</h1>
+        {favoritesList.map((favCoffee) => (
+          <div>
+            {CoffeeName(favCoffee.proportion)}
+            <div>
+              <CreateNote coffeeId={favCoffee.coffeeId} />
+            </div>
+          </div>
+        ))}
+      </Container>
       <NavBar />
     </>
   );

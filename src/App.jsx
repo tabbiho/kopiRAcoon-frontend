@@ -25,12 +25,14 @@ function App() {
     milk: { evapMilk: false, condMilk: true },
     ice: false,
     sugar: 'Regular',
+    favorite: false,
   };
 
   const UPDATE_DIAGRAM_COFFEE = 'UPDATE_DIAGRAM_COFFEE';
   const UPDATE_DIAGRAM_MILK = 'UPDATE_DIAGRAM_MILK';
   const UPDATE_DIAGRAM_ICE = 'UPDATE_DIAGRAM_ICE';
   const UPDATE_DIAGRAM_SUGAR = 'UPDATE_DIAGRAM_SUGAR';
+  const SET_FAVORITE = 'SET_FAVORITE';
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -42,6 +44,8 @@ function App() {
         return { ...state, ice: action.payload };
       case UPDATE_DIAGRAM_SUGAR:
         return { ...state, sugar: action.payload };
+      case SET_FAVORITE:
+        return { ...state, favorite: action.payload };
       default:
         return state;
     }
@@ -60,6 +64,7 @@ function App() {
       UPDATE_DIAGRAM_MILK,
       UPDATE_DIAGRAM_ICE,
       UPDATE_DIAGRAM_SUGAR,
+      SET_FAVORITE,
     },
   };
 

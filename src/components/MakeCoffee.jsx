@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from '@mui/material';
 import CoffeeDiagramMain from './coffee-components/CoffeeDiagramMain.jsx';
 import Combination from './coffee-components/Combination.jsx';
 import SaveToFave from './coffee-components/SaveToFave.jsx';
@@ -8,10 +9,12 @@ import Preset from './coffee-components/Preset.jsx';
 function MakeCoffee() {
   return (
     <>
-      <Preset />
-      <CoffeeDiagramMain />
-      <Combination />
-      <SaveToFave />
+      <Container className="main-container-wrapper">
+        <Preset />
+        <CoffeeDiagramMain />
+        <Combination />
+        <SaveToFave />
+      </Container>
       <NavBar />
     </>
   );

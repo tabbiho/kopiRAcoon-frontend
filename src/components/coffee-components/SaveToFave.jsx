@@ -1,4 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
+/* eslint-disable no-unused-expressions */
+import React, { useContext, useEffect, useState } from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import axios from 'axios';
 import AppContext from '../../functions.jsx';
@@ -6,13 +7,20 @@ import AppContext from '../../functions.jsx';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
 
 function SaveToFave() {
-  const [favorite, setFavorite] = useState(false);
-  const { appState } = useContext(AppContext);
+  const [favoritesClicked, setFavoritesStatus] = useState(false);
+  const { appState, dispatch, keywords } = useContext(AppContext);
+  const { SET_FAVORITE } = keywords;
   console.log(appState);
+
+  const handleFavoritesClicked = () => {
+    // eslint-disable-next-line max-len
+    appState.favorite ? dispatch({ type: SET_FAVORITE, payload: false }) : dispatch({ type: SET_FAVORITE, payload: true });
+    favoritesClicked ? setFavoritesStatus(false) : setFavoritesStatus(true);
+  };
 
   useEffect(() => {
     // if favourite is true, do a post request to backend to save favorite
-    if (favorite) {
+    if (appState.favorite) {
       const postFavoriteReq = async () => {
         try {
           // eslint-disable-next-line no-unused-vars
@@ -34,13 +42,13 @@ function SaveToFave() {
       }
     };
     deleteFavoriteReq();
-  }, [favorite]);
+  }, [favoritesClicked]);
   return (
     <>
-      {favorite && (
+      {appState.favorite && (
       <StarIcon className="favorite-icon" />
       )}
-      <button type="button" onClick={() => (favorite ? setFavorite(false) : setFavorite(true))}>Favourite</button>
+      <button type="button" onClick={handleFavoritesClicked}>Favourite </button>
     </>
   );
 }
