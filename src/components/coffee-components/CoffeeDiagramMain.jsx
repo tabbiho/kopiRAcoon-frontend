@@ -4,7 +4,7 @@ import {
   Box, Slider,
   SliderTrack,
   SliderFilledTrack,
-  SliderThumb,
+  SliderThumb, SliderMark,
 } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AppContext from '../../functions.jsx';
@@ -49,10 +49,10 @@ function CoffeeDiagramMain() {
     },
   };
 
-  const handleCoffeeLayer = (e) => {
+  const handleCoffeeLayer = (value) => {
     dispatch({ type: SET_FAVORITE, payload: false });
-    if (e.target.value >= 60 && e.target.value <= 100) {
-      dispatch({ type: UPDATE_DIAGRAM_COFFEE, payload: e.target.value });
+    if (value >= 60 && value <= 100) {
+      dispatch({ type: UPDATE_DIAGRAM_COFFEE, payload: value });
     }
   };
 
@@ -119,11 +119,23 @@ function CoffeeDiagramMain() {
         </div>
       </motion.div>
       <Box mx="auto">
-        <Slider aria-label="slider-ex-2" colorScheme="pink" defaultValue={30} onChange={handleCoffeeLayer} value={coffeeLayerProportion} id="proportion-slider">
+        <Slider step={10} aria-label="slider-ex-2" value={coffeeLayerProportion} max={100} colorScheme="pink" defaultValue={70} onChange={handleCoffeeLayer} id="proportion-slider">
           <SliderTrack>
             <SliderFilledTrack />
           </SliderTrack>
           <SliderThumb />
+          <SliderMark
+            value={coffeeLayerProportion}
+            textAlign="center"
+            bg="pink.400"
+            color="white"
+            mt="-10"
+            ml="-5"
+            w="12"
+          >
+            {coffeeLayerProportion}
+            %
+          </SliderMark>
         </Slider>
       </Box>
       <Box width={300} sx={{ mx: 'auto' }} className="slider-label">
