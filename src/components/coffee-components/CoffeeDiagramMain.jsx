@@ -1,7 +1,11 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
+import {
+  Box, Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+} from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AppContext from '../../functions.jsx';
 import typoStyles from '../Typography.module.css';
@@ -114,8 +118,13 @@ function CoffeeDiagramMain() {
           </motion.div>
         </div>
       </motion.div>
-      <Box width={300} sx={{ mx: 'auto' }}>
-        <Slider aria-label="Default" valueLabelDisplay="auto" onChange={handleCoffeeLayer} value={coffeeLayerProportion} id="proportion-slider" />
+      <Box mx="auto">
+        <Slider aria-label="slider-ex-2" colorScheme="pink" defaultValue={30} onChange={handleCoffeeLayer} value={coffeeLayerProportion} id="proportion-slider">
+          <SliderTrack>
+            <SliderFilledTrack />
+          </SliderTrack>
+          <SliderThumb />
+        </Slider>
       </Box>
       <Box width={300} sx={{ mx: 'auto' }} className="slider-label">
         <div> Coffee</div>

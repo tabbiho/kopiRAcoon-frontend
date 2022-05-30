@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-expressions */
 import React, { useContext, useEffect, useState } from 'react';
-import StarIcon from '@mui/icons-material/Star';
+import {
+  AiOutlineStar,
+} from 'react-icons/ai';
+import { Icon } from '@chakra-ui/react';
 import axios from 'axios';
 import AppContext from '../../functions.jsx';
 
@@ -46,7 +49,7 @@ function SaveToFave() {
   return (
     <>
       {appState.favorite && (
-      <StarIcon className="favorite-icon" />
+      <Icon as={AiOutlineStar} className="navbar-icon" />
       )}
       <button type="button" onClick={handleFavoritesClicked}>Favourite </button>
     </>

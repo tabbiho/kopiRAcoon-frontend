@@ -1,38 +1,46 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import PinDropIcon from '@mui/icons-material/PinDrop';
-import LogoutIcon from '@mui/icons-material/Logout';
-import LocalCafeIcon from '@mui/icons-material/LocalCafe';
-import StarIcon from '@mui/icons-material/Star';
-import FaceIcon from '@mui/icons-material/Face';
+import React from 'react';
+import {
+  HStack, Icon,
+} from '@chakra-ui/react';
+import {
+  AiOutlineUser, AiOutlineEnvironment, AiOutlineCoffee, AiOutlineStar, AiOutlineLogout,
+} from 'react-icons/ai';
 
 function NavBar() {
-  const [value, setValue] = useState(0);
   return (
-
-    <Box className="nav-bar-main-wrapper">
-      <BottomNavigation
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-      >
-        <BottomNavigationAction className="nav-bar-icon" icon={<FaceIcon />} component={Link} to="/profile" />
-
-        <BottomNavigationAction className="nav-bar-icon" icon={<PinDropIcon />} component={Link} to="/findCoffee" />
-
-        <BottomNavigationAction className="nav-bar-icon" icon={<LocalCafeIcon />} component={Link} to="/makeCoffee" />
-
-        <BottomNavigationAction className="nav-bar-icon" icon={<StarIcon />} component={Link} to="/favorites" />
-
-        <BottomNavigationAction className="nav-bar-icon" icon={<LogoutIcon />} component={Link} to="/logout" />
-
-      </BottomNavigation>
-    </Box>
+    <HStack justify="space-evenly" className="nav-bar-bar">
+      <Link to="/profile">
+        <Icon as={AiOutlineUser} className="navbar-icon" />
+        <div className="navbar-icon-label">
+          Profile
+        </div>
+      </Link>
+      <Link to="/findCoffee">
+        <Icon as={AiOutlineEnvironment} className="navbar-icon" />
+        <div className="navbar-icon-label">
+          Map
+        </div>
+      </Link>
+      <Link to="/makeCoffee">
+        <Icon as={AiOutlineCoffee} className="navbar-icon" />
+        <div className="navbar-icon-label">
+          Brew
+        </div>
+      </Link>
+      <Link to="/favorites">
+        <Icon as={AiOutlineStar} className="navbar-icon" />
+        <div className="navbar-icon-label">
+          Favorites
+        </div>
+      </Link>
+      <Link to="/Logout">
+        <Icon as={AiOutlineLogout} className="navbar-icon" />
+        <div className="navbar-icon-label">
+          Log out
+        </div>
+      </Link>
+    </HStack>
 
   );
 }

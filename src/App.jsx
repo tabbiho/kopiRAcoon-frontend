@@ -6,6 +6,7 @@ import {
   Route,
 } from 'react-router-dom';
 import axios from 'axios';
+import { ChakraProvider } from '@chakra-ui/react';
 import MakeCoffee from './components/MakeCoffee.jsx';
 import FindCoffee from './components/FindCoffee.jsx';
 import AppContext from './functions.jsx';
@@ -70,17 +71,19 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AppContext.Provider value={contextState}>
-        <Routes>
-          <Route path="/makeCoffee" element={<MakeCoffee />} />
-          <Route path="/findCoffee" element={<FindCoffee />} />
-          <Route path="/favorites" element={<FavoritesDisplay />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-      </AppContext.Provider>
+      <ChakraProvider>
+        <AppContext.Provider value={contextState}>
+          <Routes>
+            <Route path="/makeCoffee" element={<MakeCoffee />} />
+            <Route path="/findCoffee" element={<FindCoffee />} />
+            <Route path="/favorites" element={<FavoritesDisplay />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </AppContext.Provider>
+      </ChakraProvider>
     </BrowserRouter>
   );
 }

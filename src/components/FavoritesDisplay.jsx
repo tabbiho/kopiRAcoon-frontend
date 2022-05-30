@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import { Container } from '@mui/material';
+import { Container } from '@chakra-ui/react';
 import AppContext from '../functions.jsx';
 import CoffeeName from './coffee-components/CoffeeName.jsx';
 import NavBar from './NavBar.jsx';
@@ -22,21 +22,19 @@ function FavoritesDisplay() {
 
   console.log(favoritesList);
   return (
-    <>
-      <Container className="main-container-wrapper">
-        <Loader />
-        <h1>Show all favorites</h1>
-        {favoritesList.map((favCoffee) => (
+    <Container className="main-container-wrapper" maxWidth="410px">
+      <Loader />
+      <h1>Show all favorites</h1>
+      {favoritesList.map((favCoffee) => (
+        <div>
+          {CoffeeName(favCoffee.proportion)}
           <div>
-            {CoffeeName(favCoffee.proportion)}
-            <div>
-              <CreateNote coffeeId={favCoffee.coffeeId} />
-            </div>
+            <CreateNote coffeeId={favCoffee.coffeeId} />
           </div>
-        ))}
-      </Container>
+        </div>
+      ))}
       <NavBar />
-    </>
+    </Container>
   );
 }
 

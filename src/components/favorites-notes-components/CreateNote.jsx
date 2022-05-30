@@ -1,32 +1,19 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import {
+  Box, Modal, Button, Textarea, Tooltip, useDisclosure,
+  ModalOverlay, ModalHeader, ModalContent, ModalCloseButton, ModalBody, ModalFooter,
+} from '@chakra-ui/react';
+
 import axios from 'axios';
-import Tooltip from '@mui/material/Tooltip';
 import DeleteModal from './DeleteModal.jsx';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
 axios.defaults.withCredentials = true;
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  pt: 2,
-  px: 4,
-  pb: 3,
-};
 
 function CreateNote({ coffeeId }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const CHARACTER_LIMIT = 150;
   const [toggle, setToggle] = useState(true);
-  const [open, setOpen] = useState(false);
   const [notesContent, setNotesContent] = useState('');
   const [postedContent, setPostedContent] = useState('');
 
@@ -40,11 +27,8 @@ function CreateNote({ coffeeId }) {
   };
 
   const handleOpen = () => {
-    setOpen(true);
+    onOpen();
     retrieveNotes();
-  };
-  const handleClose = () => {
-    setOpen(false);
   };
 
   const handleChangeNotes = (e) => {
@@ -91,16 +75,16 @@ function CreateNote({ coffeeId }) {
   return (
     <div>
       <Button onClick={handleOpen}>Create Note</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="parent-modal-title"
-        aria-describedby="parent-modal-description"
-      >
-        <Box sx={{ ...style, width: 400 }}>
-          <h2 id="parent-modal-title">Notes:</h2>
-          {/* to see posted content */}
-          {postedContent
+      <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Create your account</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6} />
+          <Box>
+            <h2 id="parent-modal-title">Notes:</h2>
+            {/* to see posted content */}
+            {postedContent
            && (postedContent.length !== 0 && toggle)
             && (
               <>
@@ -110,8 +94,8 @@ function CreateNote({ coffeeId }) {
                 <DeleteModal coffeeId={coffeeId} setPostedContent={setPostedContent} />
               </>
             )}
-          {/* if no note is posted, text area available to create new post */}
-          {(!postedContent && toggle)
+            {/* if no note is posted, text area available to create new post */}
+            {(!postedContent && toggle)
             && (
               <Box
                 component="form"
@@ -121,49 +105,61 @@ function CreateNote({ coffeeId }) {
                 noValidate
                 autoComplete="off"
               >
-                <TextField
+                <Textarea
                   id="filled-basic"
                   label="Notes"
                   variant="filled"
-                  multiline
                   onChange={handleChangeNotes}
                   value={notesContent}
-                  helperText={`Word Limit: ${notesContent.length}/${CHARACTER_LIMIT}`}
-                  inputProps={{
-                    maxLength: CHARACTER_LIMIT,
-                  }}
+                  maxLength={CHARACTER_LIMIT}
                 />
+                <div>
+                  `Word Limit: $
+                  {notesContent.length}
+                  /$
+                  {CHARACTER_LIMIT}
+                  `
+                </div>
                 <Button onClick={saveNote}>Save</Button>
               </Box>
             )}
-          {/* if want to edit note */}
-          { (!toggle && postedContent.length > 0) && (
-          <Box
-            component="form"
-            sx={{
-              '& > :not(style)': { m: 1, width: '50vh' },
-            }}
-            noValidate
-            autoComplete="off"
-          >
-            <TextField
-              id="filled-basic"
-              label="Notes"
-              variant="filled"
-              multiline
-              onChange={handleEditedNotes}
-              value={postedContent}
-              helperText={`Word Limit: ${postedContent.length}/${CHARACTER_LIMIT}`}
-              inputProps={{
-                maxLength: CHARACTER_LIMIT,
+            {/* if want to edit note */}
+            { (!toggle && postedContent.length > 0) && (
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '50vh' },
               }}
-            />
-            <Button onClick={saveEditNotes}>Save Changes</Button>
+              noValidate
+              autoComplete="off"
+            >
+              <Textarea
+                id="filled-basic"
+                label="Notes"
+                variant="filled"
+                onChange={handleEditedNotes}
+                value={postedContent}
+                maxLength={CHARACTER_LIMIT}
+              />
+              <div>
+                `Word Limit: $
+                {postedContent.length}
+                /$
+                {CHARACTER_LIMIT}
+                `
+              </div>
+            </Box>
+            )}
           </Box>
-          )}
-
-        </Box>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={saveEditNotes}>
+              Save
+            </Button>
+            <Button onClick={onClose}>Cancel</Button>
+          </ModalFooter>
+        </ModalContent>
       </Modal>
+
     </div>
   );
 }

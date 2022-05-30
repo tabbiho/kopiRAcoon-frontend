@@ -1,16 +1,16 @@
 import React from 'react';
-import { Container } from '@mui/material';
+import { Container, Box } from '@chakra-ui/react';
 import CoffeeMap from './map-components/CoffeeMap.jsx';
 import NavBar from './NavBar.jsx';
 
 function FindCoffee() {
   return (
-    <>
-      <Container className="main-container-wrapper">
+    <Container className="main-container-wrapper" maxWidth="410px">
+      <Box className="content-main">
         <CoffeeMap />
-      </Container>
+      </Box>
       <NavBar />
-    </>
+    </Container>
 
   );
 }
