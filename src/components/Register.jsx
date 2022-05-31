@@ -44,7 +44,7 @@ function Register() {
         <Link to="/login">
           <Button bg="transparent" id="back-arrow-btn"><Icon as={AiOutlineArrowLeft} id="back-arrow" /></Button>
         </Link>
-        <Heading className="heading-login" textAlign="center" as="h2" size="xl">REGISTER</Heading>
+        <Heading className="heading-login" as="h2" size="xl">REGISTER</Heading>
       </HStack>
       <Box>
         <Text className="login-label">
@@ -89,7 +89,7 @@ function Register() {
         />
       </Box>
 
-      <Button boxShadow="xl" mx="auto" width="30%" size="md" className="login-btn" mt={3} onClick={handleRegister}>Register</Button>
+      <Button boxShadow="xl" mx="auto" width="30%" size="lg" className="login-btn" mt={3} onClick={handleRegister}>Register</Button>
       {registerDetails.passwordError && (<Box>Passwords do not match!</Box>)}
       {registerDetails.duplicateError && (<Box>{`The username "${registerDetails.username} already exists!"`}</Box>)}
       {registerDetails.success && (<Box>Account created successfully! You may log in now.</Box>)}

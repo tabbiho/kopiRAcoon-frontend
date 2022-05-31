@@ -117,11 +117,14 @@ body {
   margin: auto;
   position: fixed;
   bottom: 0;
-  background-image: linear-gradient(#845555, #441c1e);
+  background-color: #3d1618;
   gap: 2vh;
   color: #fff5f4;
   width: 100%;
   max-width: 400px;
+  padding-top: 1vh;
+  border-top-left-radius: 30%;
+  border-top-right-radius: 30%;
 }
 
 .nav-bar-bar a {

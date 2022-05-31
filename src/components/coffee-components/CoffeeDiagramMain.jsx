@@ -14,7 +14,7 @@ import CoffeeName from './CoffeeName.jsx';
 
 function CoffeeDiagramMain() {
   const {
-    appState, dispatch, keywords, t,
+    appState, dispatch, keywords,
   } = useContext(AppContext);
   const coffeeLayerProportion = appState.coffee;
   const waterLayerProportion = 100 - appState.coffee;
@@ -152,7 +152,7 @@ function CoffeeDiagramMain() {
                 </SliderMark>
               </Slider>
             </Box>
-            <Box width={300} sx={{ mx: 'auto' }} className="slider-label">
+            <Box width={300} className="slider-label">
               <div> Coffee</div>
               <div> Water</div>
             </Box>

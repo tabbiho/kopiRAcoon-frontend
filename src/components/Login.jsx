@@ -50,7 +50,7 @@ function Login() {
             { ...prev, password: e.target.value }))}
         />
       </Box>
-      <Button boxShadow="xl" mx="auto" width="30%" size="md" className="login-btn" mt={3} onClick={handleLogin}>Login</Button>
+      <Button boxShadow="xl" mx="auto" width="30%" size="lg" className="login-btn" mt={3} onClick={handleLogin}>Login</Button>
       {loginDetails.error && (<Box mt={3}>Login unsuccessful. Please try again.</Box>)}
       {loginDetails.loggedIn && (<Navigate to="/makeCoffee" replace />)}
       <Box mt={3} textAlign="center">
