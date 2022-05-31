@@ -31,3 +31,4 @@ INITIAL SETUP DONE!
 290522 1100: Logout & profile features done
 310522 1800: Translation feature done
 310522 1930: Random Coffee feature done
+010622 0030: Updated translation components
