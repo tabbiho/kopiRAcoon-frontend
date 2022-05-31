@@ -79,7 +79,6 @@ body {
 .logo-icon-wrapper {
   position: relative;
   width: 40vh;
-  border: 1px solid black;
 }
 
 .coffee-cup-wrapper {
@@ -101,6 +100,11 @@ body {
   width: 1.2vh;
 }
 
+.smoke-wrapper {
+  display: flex;
+  margin-left: 1vh;
+}
+
 .nav-bar-bar {
   margin: auto;
   position: fixed;
@@ -118,11 +122,17 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1vh;
+  width: 6vh;
 }
 .navbar-icon-label {
   font-size: 0.7em;
+  white-space: nowrap;
   margin-top: 0.2em;
-  font-family: Oswald;
+  font-family: roboto;
+}
+
+.nav-bar-bar a:hover {
+  background-color: #57363599 !important;
 }
 .small-logo-icon {
   width: 7vh;
@@ -156,4 +166,26 @@ body {
 
 .nav-bar-icon {
   min-width: 0 !important;
+}
+
+/* coffee components */
+.sugar-btn {
+  width: 4vh;
+  padding: 2vh;
+}
+.sugar-bt:hover {
+  color: #506c80;
+}
+.sugar-cube {
+  max-width: 4vh;
+}
+
+#no-sugar-cube {
+  width: 3vh;
+}
+
+.coffee-component-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -4,7 +4,6 @@ import { Container } from '@chakra-ui/react';
 import AppContext from '../functions.jsx';
 import CoffeeName from './coffee-components/CoffeeName.jsx';
 import NavBar from './NavBar.jsx';
-import Loader from './Loader.jsx';
 import CreateNote from './favorites-notes-components/CreateNote.jsx';
 
 function FavoritesDisplay() {
@@ -23,7 +22,6 @@ function FavoritesDisplay() {
   console.log(favoritesList);
   return (
     <Container className="main-container-wrapper" maxWidth="410px">
-      <Loader />
       <h1>Show all favorites</h1>
       {favoritesList.map((favCoffee) => (
         <div>

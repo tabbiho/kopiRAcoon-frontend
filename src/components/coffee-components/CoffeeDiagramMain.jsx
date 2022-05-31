@@ -9,6 +9,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import AppContext from '../../functions.jsx';
 import typoStyles from '../Typography.module.css';
+import Preset from './Preset.jsx';
 
 function CoffeeDiagramMain() {
   const { appState, dispatch, keywords } = useContext(AppContext);
@@ -64,6 +65,7 @@ function CoffeeDiagramMain() {
         <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
       </div>
       <div className={typoStyles['title-main']}> Make your own Coffee</div>
+      <Preset />
       <motion.div
         className="coffee-main-page-wrapper"
         variants={coffeeWrapperVariant}
