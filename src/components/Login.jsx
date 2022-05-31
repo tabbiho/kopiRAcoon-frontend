@@ -1,7 +1,11 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Navigate, Link } from 'react-router-dom';
+import {
+  Container, Box, Input, Button, Text, Heading,
+} from '@chakra-ui/react';
 import AppContext from '../functions.jsx';
+import LogoAnimation from './login-components-css/LogoAnimation.jsx';
 
 function Login() {
   const { BACKEND_URL } = useContext(AppContext);
@@ -25,29 +29,36 @@ function Login() {
   };
 
   return (
-    <>
-      <h2>kopiRAccoon</h2>
-      <div>
-        Username:
-        <input onChange={(e) => setLoginDetails((prev) => (
+    <Container className="main-container-wrapper" maxWidth="410px">
+      <LogoAnimation />
+      <Heading className="heading-login" textAlign="center" as="h2" size="xl" mt={3}>LOGIN</Heading>
+      <Box>
+        <Text className="login-label">
+          Username:
+        </Text>
+        <Input onChange={(e) => setLoginDetails((prev) => (
           { ...prev, username: e.target.value }))}
         />
-      </div>
-      <div>
-        Password:
-        <input
+      </Box>
+      <Box>
+        <Text className="login-label">
+          Password:
+        </Text>
+        <Input
           type="password"
           onChange={(e) => setLoginDetails((prev) => (
             { ...prev, password: e.target.value }))}
         />
-      </div>
-      <button type="button" onClick={handleLogin}>Login</button>
-      {loginDetails.error && (<div>Login unsuccessful. Please try again.</div>)}
+      </Box>
+      <Button boxShadow="xl" mx="auto" width="30%" size="md" className="login-btn" mt={3} onClick={handleLogin}>Login</Button>
+      {loginDetails.error && (<Box mt={3}>Login unsuccessful. Please try again.</Box>)}
       {loginDetails.loggedIn && (<Navigate to="/makeCoffee" replace />)}
-      Not a user yet? Register
-      {' '}
-      <Link to="/register">here</Link>
-    </>
+      <Box mt={3} textAlign="center">
+        Not a user yet? Register
+        {' '}
+        <Link to="/register" id="here-link">here</Link>
+      </Box>
+    </Container>
   );
 }
 

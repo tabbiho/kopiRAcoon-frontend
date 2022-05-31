@@ -22,6 +22,9 @@ function FavoritesDisplay() {
   console.log(favoritesList);
   return (
     <Container className="main-container-wrapper" maxWidth="410px">
+      <div className="small-logo-wrapper">
+        <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
+      </div>
       <h1>Show all favorites</h1>
       {favoritesList.map((favCoffee) => (
         <div>

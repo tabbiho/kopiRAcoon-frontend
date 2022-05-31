@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {
+  Container, Box, Input, Button, Text, Heading,
+} from '@chakra-ui/react';
 import AppContext from '../functions.jsx';
 
 function Register() {
@@ -32,50 +35,61 @@ function Register() {
   };
 
   return (
-    <>
-      <h3>Register</h3>
-      <div>
-        Username:
-        <input
+    <Container className="main-container-wrapper" maxWidth="410px">
+      <Box className="small-logo-wrapper">
+        <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
+      </Box>
+      <Heading className="heading-login" textAlign="center" as="h2" size="xl" mt={3}>REGISTER</Heading>
+      <Box>
+        <Text className="login-label">
+          Username:
+        </Text>
+        <Input
           value={registerDetails.username}
           onChange={(e) => (setRegisterDetails((prev) => (
             { ...prev, username: e.target.value })))}
         />
-      </div>
-      <div>
-        Display Name:
-        <input
+      </Box>
+      <Box>
+        <Text className="login-label">
+          Display Name:
+        </Text>
+        <Input
           value={registerDetails.displayName}
           onChange={(e) => (setRegisterDetails((prev) => (
             { ...prev, displayName: e.target.value })))}
         />
-      </div>
-      <div>
-        Password:
-        <input
+      </Box>
+      <Box>
+        <Text className="login-label">
+          Password:
+        </Text>
+        <Input
           type="password"
           value={registerDetails.password}
           onChange={(e) => (setRegisterDetails((prev) => (
             { ...prev, password: e.target.value })))}
         />
-      </div>
-      <div>
-        Reconfirm Password:
-        <input
+      </Box>
+      <Box>
+        <Text className="login-label">
+          Reconfirm Password:
+        </Text>
+        <Input
           value={registerDetails.confirmPassword}
           type="password"
           onChange={(e) => (setRegisterDetails((prev) => (
             { ...prev, confirmPassword: e.target.value })))}
         />
-      </div>
+      </Box>
       <Link to="/login">
-        <button type="button">Back</button>
+        <Button type="button">Back</Button>
       </Link>
-      <button type="button" onClick={handleRegister}>Register</button>
-      {registerDetails.passwordError && (<div>Passwords do not match!</div>)}
-      {registerDetails.duplicateError && (<div>{`The username "${registerDetails.username} already exists!"`}</div>)}
-      {registerDetails.success && (<div>Account created successfully! You may log in now.</div>)}
-    </>
+      <Button boxShadow="xl" mx="auto" width="30%" size="md" className="login-btn" mt={3} onClick={handleRegister}>Register</Button>
+      {registerDetails.passwordError && (<Box>Passwords do not match!</Box>)}
+      {registerDetails.duplicateError && (<Box>{`The username "${registerDetails.username} already exists!"`}</Box>)}
+      {registerDetails.success && (<Box>Account created successfully! You may log in now.</Box>)}
+    </Container>
   );
 }
 

@@ -1,19 +1,17 @@
 import React, { useContext } from 'react';
 import {
-  Button, Box, Grid, GridItem,
+  Button, Box, Grid, GridItem, Checkbox,
 } from '@chakra-ui/react';
 import AppContext from '../../functions.jsx';
-import CoffeeName from './CoffeeName.jsx';
 
 function Combination() {
   const { appState, dispatch, keywords } = useContext(AppContext);
   const { UPDATE_DIAGRAM_ICE, UPDATE_DIAGRAM_SUGAR, UPDATE_DIAGRAM_MILK } = keywords;
 
   return (
-    <>
+    <Box>
       <Grid
-        h="200px"
-        templateRows="repeat(2, 1fr)"
+        templateRows="repeat(3, 1fr)"
         templateColumns="repeat(5, 1fr)"
         gap={4}
       >
@@ -26,16 +24,22 @@ function Combination() {
           <Button
             onClick={() => {
               dispatch({ type: UPDATE_DIAGRAM_ICE, payload: false }); }}
+            className="temperature-btn"
           >
-            None
+            <div>
+              <img src="../../images/logo-icon/hot.png" alt="sugar-cube" className="temperature-img" />
+            </div>
           </Button>
         </GridItem>
         <GridItem colSpan={2} className="coffee-component-col">
           <Button
             onClick={() => {
               dispatch({ type: UPDATE_DIAGRAM_ICE, payload: true }); }}
+            className="temperature-btn"
           >
-            Ice
+            <div>
+              <img src="../../images/logo-icon/ice.png" alt="sugar-cube" className="temperature-img" />
+            </div>
           </Button>
         </GridItem>
         <GridItem rowSpan={1} colSpan={1} className="coffee-component-col">
@@ -95,7 +99,10 @@ function Combination() {
         </GridItem>
         <GridItem colSpan={2} className="coffee-component-col">
           <div>
-            <input
+            <Checkbox
+              size="md"
+              colorScheme="pink"
+              className="checkbox-milk"
               type="checkbox"
               defaultChecked={appState.milk.condMilk}
               onChange={(e) => {
@@ -103,30 +110,30 @@ function Combination() {
                   type: UPDATE_DIAGRAM_MILK,
                   payload: { ...appState.milk, condMilk: e.target.checked },
                 }); }}
-            />
-            {' '}
-            Condensed Milk
+            >
+              Condensed Milk
+            </Checkbox>
           </div>
         </GridItem>
         <GridItem colSpan={2} className="coffee-component-col">
           <div>
-            <input
-              type="checkbox"
+            <Checkbox
+              size="md"
+              colorScheme="pink"
+              className="checkbox-milk"
               defaultChecked={appState.milk.evapMilk}
               onChange={(e) => {
                 dispatch({
                   type: UPDATE_DIAGRAM_MILK,
                   payload: { ...appState.milk, evapMilk: e.target.checked },
                 }); }}
-            />
-            {' '}
-            Evaporated Milk
+            >
+              Evaporated Milk
+            </Checkbox>
           </div>
         </GridItem>
       </Grid>
-
-      <h3>{CoffeeName(appState)}</h3>
-    </>
+    </Box>
   );
 }
 export default Combination;
