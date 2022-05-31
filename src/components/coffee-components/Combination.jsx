@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {
-  Button, Box, Grid, GridItem, Checkbox,
+  Button, Box, Grid, GridItem, Checkbox, VStack,
 } from '@chakra-ui/react';
 import AppContext from '../../functions.jsx';
 
@@ -18,31 +18,42 @@ function Combination() {
         gap={4}
       >
         <GridItem rowSpan={1} colSpan={1} className="coffee-component-col">
+
           <Box>
             {t('ice')}
           </Box>
         </GridItem>
         <GridItem colSpan={2} className="coffee-component-col">
-          <Button
-            onClick={() => {
-              dispatch({ type: UPDATE_DIAGRAM_ICE, payload: false }); }}
-            className="temperature-btn"
-          >
+          <VStack>
+            <Button
+              onClick={() => {
+                dispatch({ type: UPDATE_DIAGRAM_ICE, payload: false }); }}
+              className="temperature-btn"
+            >
+              <div>
+                <img src="../../images/logo-icon/hot.png" alt="sugar-cube" className="temperature-img" />
+              </div>
+            </Button>
             <div>
-              <img src="../../images/logo-icon/hot.png" alt="sugar-cube" className="temperature-img" />
+              {t('none')}
             </div>
-          </Button>
+          </VStack>
         </GridItem>
         <GridItem colSpan={2} className="coffee-component-col">
-          <Button
-            onClick={() => {
-              dispatch({ type: UPDATE_DIAGRAM_ICE, payload: true }); }}
-            className="temperature-btn"
-          >
-            <div>
-              <img src="../../images/logo-icon/ice.png" alt="sugar-cube" className="temperature-img" />
-            </div>
-          </Button>
+          <VStack>
+            <Button
+              onClick={() => {
+                dispatch({ type: UPDATE_DIAGRAM_ICE, payload: true }); }}
+              className="temperature-btn"
+            >
+              <div>
+                <img src="../../images/logo-icon/ice.png" alt="sugar-cube" className="temperature-img" />
+              </div>
+            </Button>
+            <Box>
+              {t('ice')}
+            </Box>
+          </VStack>
         </GridItem>
         <GridItem rowSpan={1} colSpan={1} className="coffee-component-col">
           <Box>
@@ -50,49 +61,71 @@ function Combination() {
           </Box>
         </GridItem>
         <GridItem colSpan={1} className="coffee-component-col">
-          <Button
-            onClick={() => {
-              dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'None' }); }}
-            className="sugar-btn"
-          >
+          <VStack>
+            <Button
+              onClick={() => {
+                dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'None' }); }}
+              className="sugar-btn"
+            >
+              <div>
+                <img src="../../images/logo-icon/no-sugar.png" alt="sugar-cube" className="sugar-cube" id="no-sugar-cube" />
+              </div>
+            </Button>
             <div>
-              <img src="../../images/logo-icon/no-sugar.png" alt="sugar-cube" className="sugar-cube" id="no-sugar-cube" />
+              {t('none')}
             </div>
-          </Button>
+          </VStack>
         </GridItem>
         <GridItem colSpan={1} className="coffee-component-col">
-          <Button
-            onClick={() => {
-              dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'Less' }); }}
-            className="sugar-btn"
-          >
+          <VStack>
+            <Button
+              onClick={() => {
+                dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'Less' }); }}
+              className="sugar-btn"
+            >
+              <div>
+                <img src="../../images/logo-icon/sugarCube.png" alt="sugar-cube" className="sugar-cube" />
+              </div>
+            </Button>
             <div>
-              <img src="../../images/logo-icon/sugarCube.png" alt="sugar-cube" className="sugar-cube" />
+              {t('less')}
             </div>
-          </Button>
+          </VStack>
         </GridItem>
         <GridItem colSpan={1} className="coffee-component-col">
-          <Button
-            onClick={() => {
-              dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'Regular' }); }}
-            className="sugar-btn"
-          >
+          <VStack>
+            <Button
+              onClick={() => {
+                dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'Regular' }); }}
+              className="sugar-btn"
+            >
+              <div>
+                <img src="../../images/logo-icon/sugar-normal.png" alt="sugar-cube" className="sugar-cube" />
+              </div>
+
+            </Button>
             <div>
-              <img src="../../images/logo-icon/sugar-normal.png" alt="sugar-cube" className="sugar-cube" />
+              {t('regular')}
             </div>
-          </Button>
+          </VStack>
         </GridItem>
         <GridItem colSpan={1} className="coffee-component-col">
-          <Button
-            type="button"
-            onClick={() => {
-              dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'More' }); }}
-            className="sugar-btn"
-          >
+          <VStack>
+            <Button
+              type="button"
+              onClick={() => {
+                dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'More' }); }}
+              className="sugar-btn"
+            >
+              <div>
+                <img src="../../images/logo-icon/sugar-more.png" alt="sugar-cube" className="sugar-cube" />
+              </div>
+
+            </Button>
             <div>
-              <img src="../../images/logo-icon/sugar-more.png" alt="sugar-cube" className="sugar-cube" />
+              {t('more')}
             </div>
-          </Button>
+          </VStack>
         </GridItem>
         <GridItem rowSpan={1} colSpan={1} className="coffee-component-col">
           <Box>

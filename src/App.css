@@ -123,8 +123,6 @@ body {
   width: 100%;
   max-width: 400px;
   padding-top: 1vh;
-  border-top-left-radius: 30%;
-  border-top-right-radius: 30%;
 }
 
 .nav-bar-bar a {
@@ -334,4 +332,8 @@ body {
 
 #back-arrow-btn:hover {
   background-color: transparent;
+}
+
+.content-main {
+  overflow-y: hidden;
 }

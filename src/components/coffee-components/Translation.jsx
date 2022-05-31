@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Select } from '@chakra-ui/react';
 import i18n from '../../i18n.js';
 import AppContext from '../../functions.jsx';
 
@@ -11,7 +11,7 @@ function Translation() {
   };
 
   return (
-    <div>
+    <Box mb={10}>
       {i18n.language !== 'en' && (
       <Box bg="cornflowerblue" w="100%" borderRadius={5} p={2} color="white">
         Show this card to your Barista
@@ -22,7 +22,7 @@ function Translation() {
       </Box>
       )}
       Translate for your Barista:
-      <select onChange={handleLanguageChange} defaultValue={i18n.language}>
+      <Select onChange={handleLanguageChange} defaultValue={i18n.language}>
         <option value="en">English</option>
         <option value="cnS">Chinese (Simplified)</option>
         <option value="cnT">Chinese (Traditional)</option>
@@ -31,8 +31,8 @@ function Translation() {
         <option value="es">Spanish</option>
         <option value="fr">French</option>
         <option value="de">German</option>
-      </select>
-    </div>
+      </Select>
+    </Box>
   );
 }
 export default Translation;

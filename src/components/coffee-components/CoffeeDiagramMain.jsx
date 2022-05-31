@@ -129,7 +129,7 @@ function CoffeeDiagramMain() {
           gap={4}
         >
           <GridItem rowSpan={1} colSpan={1}>
-            Coffee
+            {t('coffee')}
           </GridItem>
           <GridItem rowSpan={1} colSpan={4}>
             <Box mx="auto">
