@@ -6,7 +6,7 @@ import AppContext from '../../functions.jsx';
 
 function Combination() {
   const {
-    appState, dispatch, keywords,
+    appState, dispatch, keywords, t,
   } = useContext(AppContext);
   const { UPDATE_DIAGRAM_ICE, UPDATE_DIAGRAM_SUGAR, UPDATE_DIAGRAM_MILK } = keywords;
 
@@ -19,7 +19,7 @@ function Combination() {
       >
         <GridItem rowSpan={1} colSpan={1} className="coffee-component-col">
           <Box>
-            Ice
+            {t('ice')}
           </Box>
         </GridItem>
         <GridItem colSpan={2} className="coffee-component-col">
@@ -46,7 +46,7 @@ function Combination() {
         </GridItem>
         <GridItem rowSpan={1} colSpan={1} className="coffee-component-col">
           <Box>
-            Sugar
+            {t('sugar')}
           </Box>
         </GridItem>
         <GridItem colSpan={1} className="coffee-component-col">
@@ -96,7 +96,7 @@ function Combination() {
         </GridItem>
         <GridItem rowSpan={1} colSpan={1} className="coffee-component-col">
           <Box>
-            Milk
+            {t('milk')}
           </Box>
         </GridItem>
         <GridItem colSpan={2} className="coffee-component-col">
@@ -113,7 +113,7 @@ function Combination() {
                   payload: { ...appState.milk, condMilk: e.target.checked },
                 }); }}
             >
-              Condensed Milk
+              {t('condMilk')}
             </Checkbox>
           </div>
         </GridItem>
@@ -130,7 +130,7 @@ function Combination() {
                   payload: { ...appState.milk, evapMilk: e.target.checked },
                 }); }}
             >
-              Evaporated Milk
+              {t('evapMilk')}
             </Checkbox>
           </div>
         </GridItem>
