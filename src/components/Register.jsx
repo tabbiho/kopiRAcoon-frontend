@@ -2,8 +2,9 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {
-  Container, Box, Input, Button, Text, Heading,
+  Container, Box, Input, Button, Text, Heading, Icon, HStack,
 } from '@chakra-ui/react';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 import AppContext from '../functions.jsx';
 
 function Register() {
@@ -39,7 +40,12 @@ function Register() {
       <Box className="small-logo-wrapper">
         <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
       </Box>
-      <Heading className="heading-login" textAlign="center" as="h2" size="xl" mt={3}>REGISTER</Heading>
+      <HStack mt={5}>
+        <Link to="/login">
+          <Button bg="transparent" id="back-arrow-btn"><Icon as={AiOutlineArrowLeft} id="back-arrow" /></Button>
+        </Link>
+        <Heading className="heading-login" textAlign="center" as="h2" size="xl">REGISTER</Heading>
+      </HStack>
       <Box>
         <Text className="login-label">
           Username:
@@ -82,9 +88,7 @@ function Register() {
             { ...prev, confirmPassword: e.target.value })))}
         />
       </Box>
-      <Link to="/login">
-        <Button type="button">Back</Button>
-      </Link>
+
       <Button boxShadow="xl" mx="auto" width="30%" size="md" className="login-btn" mt={3} onClick={handleRegister}>Register</Button>
       {registerDetails.passwordError && (<Box>Passwords do not match!</Box>)}
       {registerDetails.duplicateError && (<Box>{`The username "${registerDetails.username} already exists!"`}</Box>)}

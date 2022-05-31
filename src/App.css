@@ -318,3 +318,17 @@ body {
 .heading-login {
   color: #441c1e;
 }
+
+#back-arrow {
+  font-size: 2em;
+  font-weight: 600;
+  color: #441c1e;
+}
+
+#back-arrow:hover {
+  color: #ef616b;
+}
+
+#back-arrow-btn:hover {
+  background-color: transparent;
+}
