@@ -4,58 +4,59 @@ import AppContext from '../../functions.jsx';
 import CoffeeName from './CoffeeName.jsx';
 
 function Combination() {
-  const { appState, dispatch, keywords } = useContext(AppContext);
+  const {
+    appState, dispatch, keywords, t,
+  } = useContext(AppContext);
   const { UPDATE_DIAGRAM_ICE, UPDATE_DIAGRAM_SUGAR, UPDATE_DIAGRAM_MILK } = keywords;
 
   return (
     <>
-      Ice
+      {t('ice')}
       <div className="btn-group">
         <button
           type="button"
           onClick={() => {
             dispatch({ type: UPDATE_DIAGRAM_ICE, payload: false }); }}
         >
-          None
-
+          {t('none')}
         </button>
         <button
           type="button"
           onClick={() => {
             dispatch({ type: UPDATE_DIAGRAM_ICE, payload: true }); }}
         >
-          Ice
+          {t('ice')}
         </button>
       </div>
-      Sugar
+      {t('sugar')}
       <div className="btn-group">
         <button
           type="button"
           onClick={() => {
             dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'None' }); }}
         >
-          None
+          {t('none')}
         </button>
         <button
           type="button"
           onClick={() => {
             dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'Less' }); }}
         >
-          Less
+          {t('less')}
         </button>
         <button
           type="button"
           onClick={() => {
             dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'Regular' }); }}
         >
-          Regular
+          {t('regular')}
         </button>
         <button
           type="button"
           onClick={() => {
             dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'More' }); }}
         >
-          More
+          {t('more')}
         </button>
       </div>
       <div>
@@ -69,7 +70,7 @@ function Combination() {
             }); }}
         />
         {' '}
-        Condensed Milk
+        {t('condMilk')}
       </div>
       <div>
         <input
@@ -82,7 +83,7 @@ function Combination() {
             }); }}
         />
         {' '}
-        Evaporated Milk
+        {t('evapMilk')}
       </div>
       <h3>{CoffeeName(appState)}</h3>
     </>

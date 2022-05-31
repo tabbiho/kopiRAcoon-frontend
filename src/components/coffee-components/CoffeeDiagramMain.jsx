@@ -11,7 +11,9 @@ import AppContext from '../../functions.jsx';
 import typoStyles from '../Typography.module.css';
 
 function CoffeeDiagramMain() {
-  const { appState, dispatch, keywords } = useContext(AppContext);
+  const {
+    appState, dispatch, keywords, t,
+  } = useContext(AppContext);
   const coffeeLayerProportion = appState.coffee;
   const waterLayerProportion = 100 - appState.coffee;
 
@@ -107,14 +109,14 @@ function CoffeeDiagramMain() {
             style={{ height: `${(waterLayerProportion / 100) * 90}%` }}
             variants={layerVariant}
           >
-            water
+            {t('water')}
           </motion.div>
           <motion.div
             className="coffee-layer"
             style={{ height: `${(coffeeLayerProportion / 100) * 90}%` }}
             variants={layerVariant}
           >
-            coffee
+            {t('coffee')}
           </motion.div>
         </div>
       </motion.div>
@@ -139,8 +141,12 @@ function CoffeeDiagramMain() {
         </Slider>
       </Box>
       <Box width={300} sx={{ mx: 'auto' }} className="slider-label">
-        <div> Coffee</div>
-        <div> Water</div>
+        <div>
+          {t('coffee')}
+        </div>
+        <div>
+          {t('water')}
+        </div>
       </Box>
 
     </>
