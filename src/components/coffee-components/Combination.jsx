@@ -5,7 +5,9 @@ import {
 import AppContext from '../../functions.jsx';
 
 function Combination() {
-  const { appState, dispatch, keywords } = useContext(AppContext);
+  const {
+    appState, dispatch, keywords, t,
+  } = useContext(AppContext);
   const { UPDATE_DIAGRAM_ICE, UPDATE_DIAGRAM_SUGAR, UPDATE_DIAGRAM_MILK } = keywords;
 
   return (

@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 import { ChakraProvider } from '@chakra-ui/react';
+import './i18n.js';
+import { useTranslation } from 'react-i18next';
 import MakeCoffee from './components/MakeCoffee.jsx';
 import FindCoffee from './components/FindCoffee.jsx';
 import AppContext from './functions.jsx';
@@ -20,6 +22,8 @@ axios.defaults.withCredentials = true;
 
 function App() {
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
+
+  const { t } = useTranslation();
 
   const initialAppState = {
     coffee: 70,
@@ -57,7 +61,7 @@ function App() {
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const contextState = {
     BACKEND_URL,
-    // TRANSLATE_KEY,
+    t,
     appState,
     dispatch,
     keywords: {

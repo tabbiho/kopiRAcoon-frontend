@@ -5,6 +5,7 @@ import AppContext from '../functions.jsx';
 import CoffeeName from './coffee-components/CoffeeName.jsx';
 import NavBar from './NavBar.jsx';
 import CreateNote from './favorites-notes-components/CreateNote.jsx';
+import RandomCoffee from './favorites-notes-components/RandomCoffee.jsx';
 
 function FavoritesDisplay() {
   const [favoritesList, setFavoritesList] = useState([]);
@@ -34,6 +35,7 @@ function FavoritesDisplay() {
           </div>
         </div>
       ))}
+      <RandomCoffee />
       <NavBar />
     </Container>
   );

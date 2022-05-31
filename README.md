@@ -29,3 +29,5 @@ INITIAL SETUP DONE!
 260522 1700: Modified various componenents as a single json. Added favorites display
 270522 1000: Login & register feature done
 290522 1100: Logout & profile features done
+310522 1800: Translation feature done
+310522 1930: Random Coffee feature done

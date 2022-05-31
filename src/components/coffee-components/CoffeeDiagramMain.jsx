@@ -13,7 +13,9 @@ import Preset from './Preset.jsx';
 import CoffeeName from './CoffeeName.jsx';
 
 function CoffeeDiagramMain() {
-  const { appState, dispatch, keywords } = useContext(AppContext);
+  const {
+    appState, dispatch, keywords, t,
+  } = useContext(AppContext);
   const coffeeLayerProportion = appState.coffee;
   const waterLayerProportion = 100 - appState.coffee;
 

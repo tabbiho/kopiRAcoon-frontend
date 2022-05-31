@@ -4,6 +4,7 @@ import CoffeeDiagramMain from './coffee-components/CoffeeDiagramMain.jsx';
 import Combination from './coffee-components/Combination.jsx';
 import SaveToFave from './coffee-components/SaveToFave.jsx';
 import NavBar from './NavBar.jsx';
+import Translation from './coffee-components/Translation.jsx';
 
 function MakeCoffee() {
   return (
@@ -14,6 +15,7 @@ function MakeCoffee() {
       <Box className="content-main">
         <CoffeeDiagramMain />
         <Combination />
+        <Translation />
         <SaveToFave />
       </Box>
       <NavBar />
