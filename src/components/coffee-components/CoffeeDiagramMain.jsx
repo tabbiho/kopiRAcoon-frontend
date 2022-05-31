@@ -129,7 +129,7 @@ function CoffeeDiagramMain() {
           gap={4}
         >
           <GridItem rowSpan={1} colSpan={1}>
-            Coffee
+            {t('coffee')}
           </GridItem>
           <GridItem rowSpan={1} colSpan={4}>
             <Box mx="auto">
@@ -153,8 +153,8 @@ function CoffeeDiagramMain() {
               </Slider>
             </Box>
             <Box width={300} sx={{ mx: 'auto' }} className="slider-label">
-              <div> Coffee</div>
-              <div> Water</div>
+              <div>{t('coffee')}</div>
+              <div>{t('water')}</div>
             </Box>
           </GridItem>
         </Grid>
