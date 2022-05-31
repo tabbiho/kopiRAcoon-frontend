@@ -30,6 +30,9 @@ function Profile() {
 
   return (
     <Container className="main-container-wrapper" maxW="410px">
+      <div className="small-logo-wrapper">
+        <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
+      </div>
       <div>
         <h3>Change Password</h3>
         <div>

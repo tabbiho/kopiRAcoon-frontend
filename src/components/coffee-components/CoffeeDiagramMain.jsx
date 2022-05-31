@@ -4,11 +4,13 @@ import {
   Box, Slider,
   SliderTrack,
   SliderFilledTrack,
-  SliderThumb, SliderMark,
+  SliderThumb, SliderMark, Heading, Grid, GridItem,
 } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AppContext from '../../functions.jsx';
 import typoStyles from '../Typography.module.css';
+import Preset from './Preset.jsx';
+import CoffeeName from './CoffeeName.jsx';
 
 function CoffeeDiagramMain() {
   const {
@@ -62,27 +64,26 @@ function CoffeeDiagramMain() {
 
   return (
     <>
-      <div className="small-logo-wrapper">
-        <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
-      </div>
       <div className={typoStyles['title-main']}> Make your own Coffee</div>
-      <motion.div
-        className="coffee-main-page-wrapper"
-        variants={coffeeWrapperVariant}
-        initial="hidden"
-        animate="visible"
-      >
-        <div id="coffee-img-wrapper">
-          <img
-            src="../../images/logo-icon/coffeecup-outline.png"
-            alt="coffee-cup-outline"
-            id="coffee-cup-outline"
-          />
-        </div>
-        <div className="all-layers-wrapper">
-          <AnimatePresence>
+      <Preset />
+      <Box className="coffee-box-container">
+        <motion.div
+          className="coffee-main-page-wrapper"
+          variants={coffeeWrapperVariant}
+          initial="hidden"
+          animate="visible"
+        >
+          <div id="coffee-img-wrapper">
+            <img
+              src="../../images/logo-icon/coffee-cup-outline.png"
+              alt="coffee-cup-outline"
+              id="coffee-cup-outline"
+            />
+          </div>
+          <div className="all-layers-wrapper">
+            <AnimatePresence>
 
-            {appState.ice
+              {appState.ice
           && (
             <motion.div
               initial={{ y: -30, opacity: 0 }}
@@ -95,7 +96,7 @@ function CoffeeDiagramMain() {
               ICE IMAGE
             </motion.div>
           )}
-            { (appState.milk.evapMilk || appState.milk.condMilk)
+              { (appState.milk.evapMilk || appState.milk.condMilk)
           && (
           <motion.div
             variants={layerVariant}
@@ -103,50 +104,60 @@ function CoffeeDiagramMain() {
             exit={{ opacity: 0, transition: 0.1 }}
           />
           ) }
-          </AnimatePresence>
-          <motion.div
-            className="water-layer"
-            style={{ height: `${(waterLayerProportion / 100) * 90}%` }}
-            variants={layerVariant}
-          >
-            {t('water')}
-          </motion.div>
-          <motion.div
-            className="coffee-layer"
-            style={{ height: `${(coffeeLayerProportion / 100) * 90}%` }}
-            variants={layerVariant}
-          >
-            {t('coffee')}
-          </motion.div>
-        </div>
-      </motion.div>
-      <Box mx="auto">
-        <Slider step={10} aria-label="slider-ex-2" value={coffeeLayerProportion} max={100} colorScheme="pink" defaultValue={70} onChange={handleCoffeeLayer} id="proportion-slider">
-          <SliderTrack>
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-          <SliderMark
-            value={coffeeLayerProportion}
-            textAlign="center"
-            bg="pink.400"
-            color="white"
-            mt="-10"
-            ml="-5"
-            w="12"
-          >
-            {coffeeLayerProportion}
-            %
-          </SliderMark>
-        </Slider>
+            </AnimatePresence>
+            <motion.div
+              className="water-layer"
+              style={{ height: `${(waterLayerProportion / 100) * 80}%` }}
+              variants={layerVariant}
+            />
+            <motion.div
+              className="coffee-layer"
+              style={{ height: `${(coffeeLayerProportion / 100) * 80}%` }}
+              variants={layerVariant}
+            />
+          </div>
+        </motion.div>
+        <Heading className="sub-heading-1" textAlign="center">
+          {CoffeeName(appState)}
+        </Heading>
       </Box>
-      <Box width={300} sx={{ mx: 'auto' }} className="slider-label">
-        <div>
-          {t('coffee')}
-        </div>
-        <div>
-          {t('water')}
-        </div>
+
+      <Box className="coffee-proportion-component " mt={12}>
+        <Grid
+          templateRows="repeat(1, 1fr)"
+          templateColumns="repeat(5, 1fr)"
+          gap={4}
+        >
+          <GridItem rowSpan={1} colSpan={1}>
+            Coffee
+          </GridItem>
+          <GridItem rowSpan={1} colSpan={4}>
+            <Box mx="auto">
+              <Slider step={10} aria-label="slider-ex-2" value={coffeeLayerProportion} max={100} colorScheme="pink" defaultValue={70} onChange={handleCoffeeLayer} id="proportion-slider">
+                <SliderTrack>
+                  <SliderFilledTrack />
+                </SliderTrack>
+                <SliderThumb />
+                <SliderMark
+                  value={coffeeLayerProportion}
+                  textAlign="center"
+                  bg="pink.400"
+                  color="white"
+                  mt="-10"
+                  ml="-5"
+                  w="12"
+                >
+                  {coffeeLayerProportion}
+                  %
+                </SliderMark>
+              </Slider>
+            </Box>
+            <Box width={300} sx={{ mx: 'auto' }} className="slider-label">
+              <div> Coffee</div>
+              <div> Water</div>
+            </Box>
+          </GridItem>
+        </Grid>
       </Box>
 
     </>
