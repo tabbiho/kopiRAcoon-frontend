@@ -32,3 +32,4 @@ INITIAL SETUP DONE!
 310522 1800: Translation feature done
 310522 1930: Random Coffee feature done
 010622 0030: Updated translation components
+010622 1845: Polish profile & map routes and check login feature done

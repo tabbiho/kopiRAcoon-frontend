@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { Navigate, Link } from 'react-router-dom';
 import {
@@ -8,7 +8,16 @@ import AppContext from '../functions.jsx';
 import LogoAnimation from './login-components-css/LogoAnimation.jsx';
 
 function Login() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { BACKEND_URL } = useContext(AppContext);
+
+  useEffect(() => {
+    const loginCheck = async () => {
+      const loginResult = await axios.get(`${BACKEND_URL}/users/loginCheck`);
+      setIsLoggedIn(loginResult.data);
+    };
+    loginCheck();
+  });
 
   const [loginDetails, setLoginDetails] = useState({
     username: '', password: '', error: false, loggedIn: false,
@@ -25,7 +34,6 @@ function Login() {
     } else {
       setLoginDetails((prev) => ({ ...prev, error: true }));
     }
-    console.log(loginResult);
   };
 
   return (
@@ -58,6 +66,7 @@ function Login() {
         {' '}
         <Link to="/register" id="here-link">here</Link>
       </Box>
+      {isLoggedIn && (<Navigate to="/makeCoffee" replace />)}
     </Container>
   );
 }

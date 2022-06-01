@@ -20,7 +20,7 @@ function Combination() {
         <GridItem rowSpan={1} colSpan={1} className="coffee-component-col">
 
           <Box>
-            {t('ice')}
+            {t('temperature')}
           </Box>
         </GridItem>
         <GridItem colSpan={2} className="coffee-component-col">
@@ -35,7 +35,7 @@ function Combination() {
               </div>
             </Button>
             <div>
-              {t('none')}
+              {t('hot')}
             </div>
           </VStack>
         </GridItem>
@@ -51,7 +51,7 @@ function Combination() {
               </div>
             </Button>
             <Box>
-              {t('ice')}
+              {t('cold')}
             </Box>
           </VStack>
         </GridItem>
