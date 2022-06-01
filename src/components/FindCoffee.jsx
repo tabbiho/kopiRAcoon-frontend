@@ -5,7 +5,6 @@ import { Container, Box } from '@chakra-ui/react';
 import AppContext from '../functions.jsx';
 import CoffeeMap from './map-components/CoffeeMap.jsx';
 import NavBar from './NavBar.jsx';
-import typoStyles from './Typography.module.css';
 
 function FindCoffee() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -23,7 +22,7 @@ function FindCoffee() {
       <Box className="small-logo-wrapper">
         <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
       </Box>
-      <div className={typoStyles['title-main']}> Find Coffee in your Area</div>
+      <div className="heading-title-h1"> Find Coffee in your Area</div>
       <Box className="content-main">
         <CoffeeMap />
       </Box>

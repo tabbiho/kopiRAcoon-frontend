@@ -29,8 +29,8 @@ function MakeCoffee() {
       <Box className="content-main">
         <CoffeeDiagramMain />
         <Combination />
-        <Translation />
         <SaveToFave />
+        <Translation />
       </Box>
       <NavBar />
       {!isLoggedIn && (<Navigate to="/login" replace />)}

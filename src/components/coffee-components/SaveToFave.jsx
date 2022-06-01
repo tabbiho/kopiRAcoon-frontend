@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import React, { useContext, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   AiOutlineStar,
 } from 'react-icons/ai';
@@ -47,11 +48,19 @@ function SaveToFave() {
     deleteFavoriteReq();
   }, [favoritesClicked]);
   return (
-    <Box>
-      {appState.favorite && (
-      <Icon as={AiOutlineStar} className="navbar-icon" />
-      )}
-      <Button mb={14} type="button" onClick={handleFavoritesClicked}>Favourite </Button>
+    <Box id="favorites-box">
+
+      <Button
+        animate={{ rotate: [360, 180, 0, 180, 360] }}
+        transition={{ duration: 2 }}
+        whileHover={{ scale: 1.2 }}
+        viewport={{ once: true }}
+        as={motion.button}
+        onClick={handleFavoritesClicked}
+        id="favorites-btn"
+      >
+        <Icon as={AiOutlineStar} id="star-btn" />
+      </Button>
     </Box>
   );
 }

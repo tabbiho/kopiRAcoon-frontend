@@ -6,7 +6,6 @@ import {
 } from '@chakra-ui/react';
 import AppContext from '../functions.jsx';
 import NavBar from './NavBar.jsx';
-import typoStyles from './Typography.module.css';
 
 function Profile() {
   const [passwordDetails, setPasswordDetails] = useState({
@@ -47,7 +46,7 @@ function Profile() {
         <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
       </div>
       <div>
-        <div className={typoStyles['title-main']}>Change Password</div>
+        <div className="main-container-wrapper">Change Password</div>
         <div>
           <Text className="login-label">
             Current Password:

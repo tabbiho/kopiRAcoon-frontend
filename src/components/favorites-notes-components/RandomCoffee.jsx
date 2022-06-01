@@ -40,7 +40,7 @@ function RandomCoffee() {
             {randomCoffee.description}
           </Box>
           <Box>
-            <Button colorScheme="teal" size="xs" onClick={handleNewCoffee} mt="2">Generate a random coffee!</Button>
+            <Button p={2} className="favorites-btn" size="xs" onClick={handleNewCoffee} mt="2">Generate a random coffee!</Button>
           </Box>
         </Box>
       )}

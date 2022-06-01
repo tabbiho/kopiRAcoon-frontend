@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import { AiOutlineDelete } from 'react-icons/ai';
 
 import {
@@ -26,7 +27,7 @@ function DeleteFavorite({ coffeeId }) {
 
   return (
     <>
-      <Button onClick={onOpen} bg="transparent">
+      <Button as={motion.button} whileHover={{ scale: 1.2 }} whileTap={{ scale: 1.2 }} id="delete-btn-box" onClick={onOpen} bg="transparent">
         <Icon id="delete-btn" as={AiOutlineDelete} />
       </Button>
       <AlertDialog
