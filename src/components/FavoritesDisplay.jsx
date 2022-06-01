@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import { Container } from '@chakra-ui/react';
+import { Container, Heading } from '@chakra-ui/react';
 import AppContext from '../functions.jsx';
 import CoffeeName from './coffee-components/CoffeeName.jsx';
 import NavBar from './NavBar.jsx';
@@ -24,9 +24,9 @@ function FavoritesDisplay() {
   return (
     <Container className="main-container-wrapper" maxWidth="410px">
       <div className="small-logo-wrapper">
-        <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
+        <img src="../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
       </div>
-      <h1>Show all favorites</h1>
+      <Heading as="h1" className="heading-title-h1"> Show all favorites</Heading>
       {favoritesList.map((favCoffee) => (
         <div>
           {CoffeeName(favCoffee.proportion)}

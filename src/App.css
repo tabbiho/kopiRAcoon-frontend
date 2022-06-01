@@ -23,6 +23,16 @@ body {
   align-items: center;
 }
 
+.heading-title-h1 {
+  font-family: Oswald !important;
+  color: #441c1e;
+  font-size: 3em;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 500;
+  margin: 2vh 1vh;
+}
+
 .coffee-layer {
   display: flex;
   width: 100%;

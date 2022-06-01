@@ -11,7 +11,7 @@ function Translation() {
   };
 
   return (
-    <Box mb={10}>
+    <Box mb={2}>
       {i18n.language !== 'en' && (
       <Box bg="cornflowerblue" w="100%" borderRadius={5} p={2} color="white">
         Show this card to your Barista

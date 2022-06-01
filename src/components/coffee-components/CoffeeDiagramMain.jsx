@@ -8,7 +8,6 @@ import {
 } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AppContext from '../../functions.jsx';
-import typoStyles from '../Typography.module.css';
 import Preset from './Preset.jsx';
 import CoffeeName from './CoffeeName.jsx';
 
@@ -64,7 +63,7 @@ function CoffeeDiagramMain() {
 
   return (
     <>
-      <div className={typoStyles['title-main']}> Make your own Coffee</div>
+      <Heading as="h1" className="heading-title-h1"> Make your own Coffee</Heading>
       <Preset />
       <Box className="coffee-box-container">
         <motion.div
