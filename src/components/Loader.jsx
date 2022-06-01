@@ -38,7 +38,7 @@ function Loader() {
           </div>
         </div>
       </div>
-      <div>loader</div>
+      {/* <div>loader</div> */}
     </>
   );
 }
