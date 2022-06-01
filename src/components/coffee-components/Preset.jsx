@@ -27,7 +27,7 @@ function Preset() {
         <option value="0">Kopi</option>
         <option value="1">Kopi C</option>
         <option value="2">Kopi O</option>
-        <option value="3">Kopi C</option>
+        <option value="3">Kopi Gah C</option>
       </select>
     </>
 

@@ -51,6 +51,11 @@ body {
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
+.coffee-layer-favorite {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
 .water-layer {
   margin: auto;
   width: 100%;
@@ -61,11 +66,40 @@ body {
   text-transform: capitalize;
   font-size: 1.3em;
 }
-#coffee-cup-outline {
+#coffee-cup-outline,
+.coffee-cup-outline-favorite {
   width: 23vh;
   position: relative;
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
   margin-left: 2vh;
+}
+
+.all-layers-wrapper {
+  height: 80%;
+  position: absolute;
+  bottom: 0;
+  padding: 1vh 1vh;
+  width: 70%;
+  margin: auto;
+  margin-left: 2vh;
+  margin-bottom: 0.3em;
+}
+
+/* favorites coffee cup display */
+
+.coffee-img-wrapper-favorite {
+  position: relative;
+  width: 50%;
+}
+
+.favorite-layers {
+  position: absolute;
+  width: 80%;
+  bottom: 0;
+  margin-left: 1.2em;
+  margin-bottom: 0;
+  height: 80%;
+  padding: 1vh 1vh;
 }
 .coffee-main-page-wrapper {
   padding: 1vh;
@@ -73,6 +107,9 @@ body {
   width: 25vh;
   margin: auto;
   margin-top: 5vh;
+}
+.favorite-list-coffee {
+  display: flex;
 }
 
 .ice-image {
@@ -114,6 +151,7 @@ body {
 
 .logo-icon-wrapper > img {
   width: 100%;
+  image-rendering: -webkit-optimize-contrast !important;
 }
 
 .smoke-wrapper img {
@@ -126,15 +164,13 @@ body {
 }
 
 .nav-bar-bar {
-  margin: auto;
+  background-color: #fff;
   position: fixed;
   bottom: 0;
-  background-color: #3d1618;
-  gap: 2vh;
-  color: #fff5f4;
+  color: #441c1e;
   width: 100%;
   max-width: 400px;
-  padding: 1vh;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
 .nav-bar-bar a {
@@ -152,27 +188,14 @@ body {
   font-family: roboto;
 }
 
-.nav-bar-bar a:hover {
-  background-color: #57363599 !important;
-}
 .small-logo-icon {
-  width: 7vh;
+  width: 10vh;
+  image-rendering: -webkit-optimize-contrast !important;
 }
 
 .small-logo-wrapper {
   padding: 0;
   border-radius: 50%;
-}
-
-.all-layers-wrapper {
-  height: 80%;
-  position: absolute;
-  bottom: 0;
-  padding: 1vh 1vh;
-  width: 70%;
-  margin: auto;
-  margin-left: 2vh;
-  margin-bottom: 0.3em;
 }
 
 #proportion-slider {
@@ -347,4 +370,22 @@ body {
 
 .content-main {
   overflow-y: hidden;
+}
+
+#delete-btn {
+  font-size: 1.3em;
+}
+
+.highlight-nav {
+  padding: 1vh;
+  width: 7vh;
+  height: 7vh;
+}
+
+.nav-bar-bar a:visited {
+  color: #ffffff !important;
+}
+
+.highlight-nav:active {
+  background-color: #441c1e;
 }

@@ -22,7 +22,6 @@ axios.defaults.withCredentials = true;
 
 function App() {
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
-
   const { t } = useTranslation();
 
   const initialAppState = {
@@ -31,6 +30,8 @@ function App() {
     ice: false,
     sugar: 'Regular',
     favorite: false,
+    allFavorites: [],
+    allNotes: [],
   };
 
   const UPDATE_DIAGRAM_COFFEE = 'UPDATE_DIAGRAM_COFFEE';
@@ -38,6 +39,7 @@ function App() {
   const UPDATE_DIAGRAM_ICE = 'UPDATE_DIAGRAM_ICE';
   const UPDATE_DIAGRAM_SUGAR = 'UPDATE_DIAGRAM_SUGAR';
   const SET_FAVORITE = 'SET_FAVORITE';
+  const LOAD_FAVORITE_LIST = 'LOAD_FAVORITE_LIST';
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -51,6 +53,8 @@ function App() {
         return { ...state, sugar: action.payload };
       case SET_FAVORITE:
         return { ...state, favorite: action.payload };
+      case LOAD_FAVORITE_LIST:
+        return { ...state, allFavorites: action.payload };
       default:
         return state;
     }

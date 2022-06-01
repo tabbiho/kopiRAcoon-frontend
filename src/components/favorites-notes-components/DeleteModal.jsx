@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  useDisclosure,
-  Box, Modal, Button,
+  useDisclosure, AlertDialog, AlertDialogContent, AlertDialogOverlay,
+  AlertDialogHeader, AlertDialogBody, AlertDialogFooter, Button,
 } from '@chakra-ui/react';
 
 import axios from 'axios';
@@ -9,33 +9,50 @@ import axios from 'axios';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
 axios.defaults.withCredentials = true;
 
-function DeleteModal({ coffeeId, setPostedContent }) {
+function DeleteModal({ coffeeId, setNotesContent, onParentModalClose }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = React.useRef();
   const handleConfirmDelete = () => {
     const deleteNote = async () => {
       const deletedNote = await axios.put(`${BACKEND_URL}/favorites/deleteNote/${coffeeId}`);
       console.log(deletedNote);
     };
     deleteNote();
-    setPostedContent(null);
+    setNotesContent('');
+    onClose();
+    onParentModalClose();
+    window.location.reload(true);
   };
 
   return (
     <>
-      <Button onClick={onOpen}>Delete</Button>
-      <Modal
+      <Button colorScheme="pink" onClick={onOpen}>Delete</Button>
+      <AlertDialog
         isOpen={isOpen}
+        leastDestructiveRef={cancelRef}
         onClose={onClose}
       >
-        <Box>
-          <h2 id="child-modal-title">Confirm Delete?</h2>
-          <p id="child-modal-description">
-            Are you sure? You can&apos;t undo this action afterwards.
-          </p>
-          <Button onClick={onClose}>Close </Button>
-          <Button onClick={handleConfirmDelete}>Confirm Delete</Button>
-        </Box>
-      </Modal>
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              Delete Note?
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              Are you sure? You can&apos;t undo this action afterwards.
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onClose}>
+                Cancel
+              </Button>
+              <Button colorScheme="red" onClick={handleConfirmDelete} ml={3}>
+                Delete
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
     </>
   );
 }

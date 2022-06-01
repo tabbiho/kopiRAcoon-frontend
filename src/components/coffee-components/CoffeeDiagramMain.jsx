@@ -18,6 +18,8 @@ function CoffeeDiagramMain() {
   const coffeeLayerProportion = appState.coffee;
   const waterLayerProportion = 100 - appState.coffee;
 
+  console.log(coffeeLayerProportion);
+
   const { UPDATE_DIAGRAM_COFFEE, SET_FAVORITE } = keywords;
 
   const coffeeWrapperVariant = {

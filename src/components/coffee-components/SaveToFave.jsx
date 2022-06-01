@@ -3,15 +3,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import {
   AiOutlineStar,
 } from 'react-icons/ai';
-import { Icon } from '@chakra-ui/react';
+import { Icon, Button, Box } from '@chakra-ui/react';
 import axios from 'axios';
 import AppContext from '../../functions.jsx';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
-
 function SaveToFave() {
   const [favoritesClicked, setFavoritesStatus] = useState(false);
-  const { appState, dispatch, keywords } = useContext(AppContext);
+  const {
+    appState, dispatch, keywords, BACKEND_URL,
+  } = useContext(AppContext);
   const { SET_FAVORITE } = keywords;
   console.log(appState);
 
@@ -47,12 +47,12 @@ function SaveToFave() {
     deleteFavoriteReq();
   }, [favoritesClicked]);
   return (
-    <>
+    <Box>
       {appState.favorite && (
       <Icon as={AiOutlineStar} className="navbar-icon" />
       )}
-      <button type="button" onClick={handleFavoritesClicked}>Favourite </button>
-    </>
+      <Button mb={14} type="button" onClick={handleFavoritesClicked}>Favourite </Button>
+    </Box>
   );
 }
 
