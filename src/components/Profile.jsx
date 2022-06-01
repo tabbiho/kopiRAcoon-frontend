@@ -1,8 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import axios from 'axios';
-import { Container } from '@chakra-ui/react';
+import {
+  Container, Text, Input, Button, Box,
+} from '@chakra-ui/react';
 import AppContext from '../functions.jsx';
 import NavBar from './NavBar.jsx';
+import typoStyles from './Typography.module.css';
 
 function Profile() {
   const [passwordDetails, setPasswordDetails] = useState({
@@ -10,6 +14,15 @@ function Profile() {
   });
 
   const { BACKEND_URL } = useContext(AppContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  useEffect(() => {
+    const loginCheck = async () => {
+      const loginResult = await axios.get(`${BACKEND_URL}/users/loginCheck`);
+      setIsLoggedIn(loginResult.data);
+    };
+    loginCheck();
+  });
 
   const handlePasswordChange = async () => {
     const { currentPassword, newPassword, confirmPassword } = passwordDetails;
@@ -34,25 +47,34 @@ function Profile() {
         <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
       </div>
       <div>
-        <h3>Change Password</h3>
+        <div className={typoStyles['title-main']}>Change Password</div>
         <div>
-          Current Password:
-          <input type="password" value={passwordDetails.currentPassword} onChange={(e) => setPasswordDetails((prev) => ({ ...prev, currentPassword: e.target.value }))} />
+          <Text className="login-label">
+            Current Password:
+          </Text>
+          <Input type="password" value={passwordDetails.currentPassword} onChange={(e) => setPasswordDetails((prev) => ({ ...prev, currentPassword: e.target.value }))} />
         </div>
         <br />
         <div>
-          New Password:
-          <input type="password" value={passwordDetails.newPassword} onChange={(e) => setPasswordDetails((prev) => ({ ...prev, newPassword: e.target.value }))} />
+          <Text className="login-label">
+            New Password:
+          </Text>
+          <Input type="password" value={passwordDetails.newPassword} onChange={(e) => setPasswordDetails((prev) => ({ ...prev, newPassword: e.target.value }))} />
         </div>
         <div>
-          Reconfirm New Password:
-          <input type="password" value={passwordDetails.confirmPassword} onChange={(e) => setPasswordDetails((prev) => ({ ...prev, confirmPassword: e.target.value }))} />
+          <Text className="login-label">
+            Reconfirm New Password:
+          </Text>
+          <Input type="password" value={passwordDetails.confirmPassword} onChange={(e) => setPasswordDetails((prev) => ({ ...prev, confirmPassword: e.target.value }))} />
         </div>
-        {passwordDetails.error && (<div>Something went wrong! Please reconfirm above info!</div>)}
-        {passwordDetails.success && (<div>Password change success!</div>)}
-        <button type="button" onClick={handlePasswordChange}>Confirm</button>
+        {passwordDetails.error
+        && (<Box mt={3}>Something went wrong! Please reconfirm above info!</Box>)}
+        {passwordDetails.success
+        && (<Box mt={3}>Password change success!</Box>)}
+        <Button boxShadow="xl" mx="auto" width="30%" size="lg" className="login-btn" mt={3} onClick={handlePasswordChange}>Confirm</Button>
         <NavBar />
       </div>
+      {!isLoggedIn && (<Navigate to="/login" replace />)}
     </Container>
   );
 }

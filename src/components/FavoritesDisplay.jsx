@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Container } from '@chakra-ui/react';
+import { Navigate } from 'react-router-dom';
 import AppContext from '../functions.jsx';
 import CoffeeName from './coffee-components/CoffeeName.jsx';
 import NavBar from './NavBar.jsx';
@@ -10,6 +11,16 @@ import RandomCoffee from './favorites-notes-components/RandomCoffee.jsx';
 function FavoritesDisplay() {
   const [favoritesList, setFavoritesList] = useState([]);
   const { BACKEND_URL } = useContext(AppContext);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  useEffect(() => {
+    const loginCheck = async () => {
+      const loginResult = await axios.get(`${BACKEND_URL}/users/loginCheck`);
+      setIsLoggedIn(loginResult.data);
+    };
+    loginCheck();
+  });
 
   useEffect(() => {
     const findFavorites = async () => {
@@ -37,6 +48,7 @@ function FavoritesDisplay() {
       ))}
       <RandomCoffee />
       <NavBar />
+      {!isLoggedIn && (<Navigate to="/login" replace />)}
     </Container>
   );
 }
