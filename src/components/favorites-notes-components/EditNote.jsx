@@ -11,7 +11,7 @@ import DeleteModal from './DeleteModal.jsx';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
 axios.defaults.withCredentials = true;
 
-function CreateNote({ coffeeId }) {
+function CreateNote({ coffeeId, coffeeName }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [notesContent, setNotesContent] = useState('');
   const CHARACTER_LIMIT = '50';
@@ -58,7 +58,11 @@ function CreateNote({ coffeeId }) {
       <Modal onClose={onClose} size="lg" isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Notes</ModalHeader>
+          <ModalHeader>
+            Notes for
+            {' '}
+            {coffeeName}
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Textarea

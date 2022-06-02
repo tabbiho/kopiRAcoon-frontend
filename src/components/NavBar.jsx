@@ -58,7 +58,7 @@ function NavBar() {
           <Link to="/findCoffee">
             <Icon as={AiOutlineEnvironment} className="navbar-icon" />
             <div className="navbar-icon-label">
-              Map
+              Find
             </div>
           </Link>
         </Tab>

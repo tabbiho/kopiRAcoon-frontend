@@ -61,17 +61,18 @@ function AllFavorites({ resource }) {
               <Text>
                 Milk:
                 {' '}
+                {(favCoffee.proportion.milk.evapMilk && favCoffee.proportion.milk.condMilk) && 'Evaporated & Condensed Milk' }
                 {(!favCoffee.proportion.milk.evapMilk && !favCoffee.proportion.milk.condMilk) && 'No milk' }
-                {favCoffee.proportion.milk.evapMilk && 'Evaporated Milk' }
-                {' '}
-                {favCoffee.proportion.milk.evapMilk && 'Condensed Milk' }
+                {(favCoffee.proportion.milk.evapMilk && !favCoffee.proportion.milk.condMilk) && 'Evaporated Milk' }
+                {(!favCoffee.proportion.milk.evapMilk && favCoffee.proportion.milk.condMilk) && 'Condensed Milk' }
               </Text>
               <Text>
                 Sugar:
+                {' '}
                 {favCoffee.proportion.sugar}
               </Text>
               <Text>
-                Ice:
+                Temperature:
                 {' '}
                 {(favCoffee.proportion.ice) ? 'Ice' : 'No Ice'}
               </Text>
@@ -87,7 +88,10 @@ function AllFavorites({ resource }) {
                 </Text>
               ))}
             <Box>
-              <EditNote coffeeId={favCoffee.coffeeId} />
+              <EditNote
+                coffeeName={CoffeeName(favCoffee.proportion)}
+                coffeeId={favCoffee.coffeeId}
+              />
             </Box>
           </HStack>
         </Box>

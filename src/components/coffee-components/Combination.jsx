@@ -49,9 +49,9 @@ function Combination() {
                 <img src="../../images/logo-icon/ice.png" alt="sugar-cube" className="temperature-img " />
               </div>
             </Button>
-            <Box className="component-coffee-title">
+            <div>
               {t('cold')}
-            </Box>
+            </div>
           </VStack>
         </GridItem>
         {/* SUGAR COMPONENT */}
@@ -138,7 +138,7 @@ function Combination() {
             colorScheme="pink"
             className="checkbox-milk"
             type="checkbox"
-            defaultChecked={appState.milk.condMilk}
+            isChecked={appState.milk.condMilk}
             onChange={(e) => {
               dispatch({
                 type: UPDATE_DIAGRAM_MILK,
@@ -151,7 +151,7 @@ function Combination() {
             size="md"
             colorScheme="pink"
             className="checkbox-milk"
-            defaultChecked={appState.milk.evapMilk}
+            isChecked={appState.milk.evapMilk}
             onChange={(e) => {
               dispatch({
                 type: UPDATE_DIAGRAM_MILK,

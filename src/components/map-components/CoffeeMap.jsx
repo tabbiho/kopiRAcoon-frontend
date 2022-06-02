@@ -15,7 +15,7 @@ function CoffeeMap() {
 
   return (
     <div>
-      {mapOrigin && !mapError ? <iframe title="coffeeMap" height="500" width="400" style={{ border: 0, marginTop: '20px' }} loading="lazy" allowFullScreen src={`https://www.google.com/maps/embed/v1/search?q=coffee&key=AIzaSyDijFCMCWXM0WzgXWvcG1qnpRM0PiCn7kQ&zoom=15&center=${mapOrigin.latitude},${mapOrigin.longitude}`} /> : (
+      {mapOrigin && !mapError ? <iframe title="coffeeMap" height="600" width="400" style={{ border: 0, marginTop: '20px' }} loading="lazy" allowFullScreen src={`https://www.google.com/maps/embed/v1/search?q=coffee&key=AIzaSyDijFCMCWXM0WzgXWvcG1qnpRM0PiCn7kQ&zoom=15&center=${mapOrigin.latitude},${mapOrigin.longitude}`} /> : (
         <div style={{ marginTop: '50px' }}>
           <Loader />
           <Center className="login-label">Scurrying for coffee in the area...</Center>

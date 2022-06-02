@@ -180,7 +180,6 @@ body {
 }
 
 .nav-bar-bar {
-  margin-bottom: 1vh;
   background-color: #fff;
   position: fixed;
   bottom: 0;
@@ -196,11 +195,11 @@ body {
   justify-content: center;
   align-items: center;
   width: 6vh;
-  font-size: 1.3em;
+  font-size: 1em;
   padding: 1vh;
 }
 .navbar-icon-label {
-  font-size: 0.8em;
+  font-size: 0.8em !important;
   white-space: nowrap;
   margin-top: 0.2em;
   font-family: roboto;
@@ -308,12 +307,12 @@ body {
 }
 .checkbox-milk .chakra-checkbox__label {
   background-color: #ba8787;
-  padding: 0.5em;
+  padding: 0.3em;
   border: 3px solid #3d1618;
   color: #fff5f4;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   white-space: nowrap;
-  max-width: 15vh;
+  max-width: 18vh;
 }
 
 .checkbox-milk .chakra-checkbox__label:hover {
@@ -495,7 +494,7 @@ body {
   border-radius: 50%;
   width: 5vh;
   height: 5vh;
-  bottom: 9vh;
+  bottom: 10vh;
   background-color: #d5a454;
   color: #f3eed9;
   z-index: 2;
@@ -506,7 +505,7 @@ body {
 }
 
 #translation-option {
-  margin-bottom: 13vh;
+  margin-bottom: 16vh;
 }
 
 #favorite-star-drink {
@@ -542,4 +541,10 @@ body {
 .proportion-header {
   border-bottom: 2px solid #3d1618;
   width: 9vh;
+}
+
+#barista-translate-text {
+  font-family: oswald;
+  font-size: 1.3em;
+  color: #3d1618;
 }

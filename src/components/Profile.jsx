@@ -46,7 +46,7 @@ function Profile() {
         <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
       </div>
       <div>
-        <div className="main-container-wrapper">Change Password</div>
+        <div className="main-container-wrapper heading-title-h1">Change Password</div>
         <div>
           <Text className="login-label">
             Current Password:
@@ -71,9 +71,9 @@ function Profile() {
         {passwordDetails.success
         && (<Box mt={3}>Password change success!</Box>)}
         <Button boxShadow="xl" mx="auto" width="30%" size="lg" className="login-btn" mt={3} onClick={handlePasswordChange}>Confirm</Button>
-        <NavBar />
       </div>
       {!isLoggedIn && (<Navigate to="/login" replace />)}
+      <NavBar />
     </Container>
   );
 }

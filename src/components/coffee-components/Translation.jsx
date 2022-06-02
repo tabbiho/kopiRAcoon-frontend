@@ -11,19 +11,8 @@ function Translation() {
   };
 
   return (
-    <Box id="translation-option" mb={2}>
-      {i18n.language !== 'en' && (
-      <Box id="translation-card" w="100%" borderRadius={5} p={3}>
-        <Text fontSize="lg">
-          Show this card to your Barista
-        </Text>
-        <hr />
-        {t('help')}
-        <br />
-        {t('appDescription')}
-      </Box>
-      )}
-      <Text my={2}>
+    <Box id="translation-option">
+      <Text id="barista-translate-text" my={2}>
         Translate for your Barista:
       </Text>
       <Select colorScheme="gray" onChange={handleLanguageChange} defaultValue={i18n.language} my={2}>
@@ -36,6 +25,19 @@ function Translation() {
         <option value="fr">French</option>
         <option value="de">German</option>
       </Select>
+      {i18n.language !== 'en' && (
+      <Box textAlign="center" id="translation-card" w="100%" borderRadius={5} p={3}>
+        <Text mb={1} fontSize="lg">
+          Show this card to your Barista
+        </Text>
+        <hr />
+        <Text mt={2} fontSize="md" lineHeight="200%">
+          {t('help')}
+          <br />
+          {t('appDescription')}
+        </Text>
+      </Box>
+      )}
     </Box>
   );
 }
