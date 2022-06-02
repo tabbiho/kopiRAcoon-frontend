@@ -18,7 +18,7 @@ function RandomCoffee() {
     <div>
       {randomCoffee
       && (
-        <Box p="4" border="1px" borderRadius={5}>
+        <Box mx="auto" w="90%" p="2" border="1px" borderRadius={5}>
           <Box display="flex" alignItems="baseline">
             <Box
               color="gray.500"

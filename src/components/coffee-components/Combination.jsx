@@ -9,7 +9,9 @@ function Combination() {
   const {
     appState, dispatch, keywords, t,
   } = useContext(AppContext);
-  const { UPDATE_DIAGRAM_ICE, UPDATE_DIAGRAM_SUGAR, UPDATE_DIAGRAM_MILK } = keywords;
+  const {
+    UPDATE_DIAGRAM_ICE, UPDATE_DIAGRAM_SUGAR, UPDATE_DIAGRAM_MILK, SET_FAVORITE,
+  } = keywords;
   const [value, setValue] = React.useState('1');
 
   return (
@@ -28,6 +30,7 @@ function Combination() {
           <VStack>
             <Button
               onClick={() => {
+                dispatch({ type: SET_FAVORITE, payload: false });
                 dispatch({ type: UPDATE_DIAGRAM_ICE, payload: false }); }}
               className="temperature-btn  hot-img"
             >
@@ -42,6 +45,7 @@ function Combination() {
           <VStack>
             <Button
               onClick={() => {
+                dispatch({ type: SET_FAVORITE, payload: false });
                 dispatch({ type: UPDATE_DIAGRAM_ICE, payload: true }); }}
               className="temperature-btn cold-img"
             >
@@ -71,6 +75,7 @@ function Combination() {
               <Radio
                 id="radio-box-sugar-no"
                 onChange={() => {
+                  dispatch({ type: SET_FAVORITE, payload: false });
                   dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'None' }); }}
                 className="sugar-btn"
                 value="None"
@@ -84,6 +89,7 @@ function Combination() {
             <VStack>
               <Radio
                 onChange={() => {
+                  dispatch({ type: SET_FAVORITE, payload: false });
                   dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'Less' }); }}
                 className="sugar-btn"
                 id="radio-box-sugar-less"
@@ -99,6 +105,7 @@ function Combination() {
               <Radio
                 id="radio-box-sugar-regular"
                 onChange={() => {
+                  dispatch({ type: SET_FAVORITE, payload: false });
                   dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'Regular' }); }}
                 className="sugar-btn"
                 value="Regular"
@@ -114,6 +121,7 @@ function Combination() {
                 id="radio-box-sugar-more"
                 type="button"
                 onChange={() => {
+                  dispatch({ type: SET_FAVORITE, payload: false });
                   dispatch({ type: UPDATE_DIAGRAM_SUGAR, payload: 'More' }); }}
                 className="sugar-btn"
                 value="More"
@@ -140,6 +148,7 @@ function Combination() {
             type="checkbox"
             isChecked={appState.milk.condMilk}
             onChange={(e) => {
+              dispatch({ type: SET_FAVORITE, payload: false });
               dispatch({
                 type: UPDATE_DIAGRAM_MILK,
                 payload: { ...appState.milk, condMilk: e.target.checked },
@@ -153,6 +162,7 @@ function Combination() {
             className="checkbox-milk"
             isChecked={appState.milk.evapMilk}
             onChange={(e) => {
+              dispatch({ type: SET_FAVORITE, payload: false });
               dispatch({
                 type: UPDATE_DIAGRAM_MILK,
                 payload: { ...appState.milk, evapMilk: e.target.checked },

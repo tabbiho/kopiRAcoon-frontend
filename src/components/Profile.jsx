@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import {
-  Container, Text, Input, Button, Box,
+  Container, Text, Input, Button, Box, Center,
 } from '@chakra-ui/react';
 import AppContext from '../functions.jsx';
 import NavBar from './NavBar.jsx';
@@ -45,33 +45,35 @@ function Profile() {
       <div className="small-logo-wrapper">
         <img src="../../images/logo-icon/full-logo.png" alt="small-logo" className="small-logo-icon" />
       </div>
-      <div>
-        <div className="main-container-wrapper heading-title-h1">Change Password</div>
+      <div className="main-container-wrapper heading-title-h1">Change Password</div>
+      <Box>
         <div>
-          <Text className="login-label">
+          <Text className="login-label password ">
             Current Password:
           </Text>
-          <Input type="password" value={passwordDetails.currentPassword} onChange={(e) => setPasswordDetails((prev) => ({ ...prev, currentPassword: e.target.value }))} />
+          <Input variant="filled" type="password" value={passwordDetails.currentPassword} onChange={(e) => setPasswordDetails((prev) => ({ ...prev, currentPassword: e.target.value }))} />
         </div>
         <br />
         <div>
-          <Text className="login-label">
+          <Text className="login-label password ">
             New Password:
           </Text>
           <Input type="password" value={passwordDetails.newPassword} onChange={(e) => setPasswordDetails((prev) => ({ ...prev, newPassword: e.target.value }))} />
         </div>
-        <div>
-          <Text className="login-label">
+        <Box mb={3}>
+          <Text className="login-label password ">
             Reconfirm New Password:
           </Text>
           <Input type="password" value={passwordDetails.confirmPassword} onChange={(e) => setPasswordDetails((prev) => ({ ...prev, confirmPassword: e.target.value }))} />
-        </div>
+        </Box>
         {passwordDetails.error
         && (<Box mt={3}>Something went wrong! Please reconfirm above info!</Box>)}
         {passwordDetails.success
         && (<Box mt={3}>Password change success!</Box>)}
-        <Button boxShadow="xl" mx="auto" width="30%" size="lg" className="login-btn" mt={3} onClick={handlePasswordChange}>Confirm</Button>
-      </div>
+        <Center>
+          <Button id="confirm-pw-btn" boxShadow="xl" size="md" className="login-btn" onClick={handlePasswordChange}>Confirm</Button>
+        </Center>
+      </Box>
       {!isLoggedIn && (<Navigate to="/login" replace />)}
       <NavBar />
     </Container>

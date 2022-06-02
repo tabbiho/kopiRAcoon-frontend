@@ -28,6 +28,8 @@ function DeleteModal({ coffeeId, setNotesContent, onParentModalClose }) {
     <>
       <Button colorScheme="pink" onClick={onOpen}>Delete</Button>
       <AlertDialog
+        size="xs"
+        isCentered
         isOpen={isOpen}
         leastDestructiveRef={cancelRef}
         onClose={onClose}
@@ -46,7 +48,7 @@ function DeleteModal({ coffeeId, setNotesContent, onParentModalClose }) {
               <Button ref={cancelRef} onClick={onClose}>
                 Cancel
               </Button>
-              <Button colorScheme="red" onClick={handleConfirmDelete} ml={3}>
+              <Button colorScheme="pink" onClick={handleConfirmDelete} ml={3}>
                 Delete
               </Button>
             </AlertDialogFooter>

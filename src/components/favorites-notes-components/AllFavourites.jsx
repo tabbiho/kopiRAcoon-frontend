@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Box, HStack, Text, Heading,
+  Box, HStack, Text, Heading, Divider,
 } from '@chakra-ui/react';
 import CoffeeName from '../coffee-components/CoffeeName.jsx';
 import EditNote from './EditNote.jsx';
@@ -11,7 +11,7 @@ function AllFavorites({ resource }) {
   const notesList = resource.notes.read();
 
   return (
-    <Box mb={6}>
+    <Box className="favorites-list-wrapper" mb={6}>
       {favoritesList.map((favCoffee) => (
         <Box boxShadow="xl" className="favorite-list" mb={3} mt={5}>
           <HStack className="coffee-name-favourites-title" justifyContent="space-between">
@@ -46,19 +46,19 @@ function AllFavorites({ resource }) {
               <Heading fontSize="lg" className="proportion-header">
                 Proportion:
               </Heading>
-              <Text>
+              <Text className="favourites-text-proportion">
                 Coffee:
                 {' '}
                 {favCoffee.proportion.coffee}
                 %
               </Text>
-              <Text>
+              <Text className="favourites-text-proportion">
                 Water:
                 {' '}
                 {100 - favCoffee.proportion.coffee}
                 %
               </Text>
-              <Text>
+              <Text className="favourites-text-proportion">
                 Milk:
                 {' '}
                 {(favCoffee.proportion.milk.evapMilk && favCoffee.proportion.milk.condMilk) && 'Evaporated & Condensed Milk' }
@@ -66,12 +66,12 @@ function AllFavorites({ resource }) {
                 {(favCoffee.proportion.milk.evapMilk && !favCoffee.proportion.milk.condMilk) && 'Evaporated Milk' }
                 {(!favCoffee.proportion.milk.evapMilk && favCoffee.proportion.milk.condMilk) && 'Condensed Milk' }
               </Text>
-              <Text>
+              <Text className="favourites-text-proportion">
                 Sugar:
                 {' '}
                 {favCoffee.proportion.sugar}
               </Text>
-              <Text>
+              <Text className="favourites-text-proportion">
                 Temperature:
                 {' '}
                 {(favCoffee.proportion.ice) ? 'Ice' : 'No Ice'}
@@ -79,20 +79,23 @@ function AllFavorites({ resource }) {
             </Box>
 
           </Box>
-          <HStack>
-            {notesList
-              .filter((notes) => notes.coffeeId === favCoffee.coffeeId)
-              .map((note) => (
-                <Text my={3}>
-                  {note.notes ? note.notes : '-- No notes--'}
-                </Text>
-              ))}
+          <Divider mt={1} />
+          <HStack alignItems="center" justifyContent="flex-start">
             <Box>
               <EditNote
                 coffeeName={CoffeeName(favCoffee.proportion)}
                 coffeeId={favCoffee.coffeeId}
               />
             </Box>
+            {notesList
+              .filter((notes) => notes.coffeeId === favCoffee.coffeeId)
+              .map((note) => (
+                <Text id="notes-display">
+                  Notes:
+                  {' '}
+                  {note.notes ? note.notes : '-Nil-'}
+                </Text>
+              ))}
           </HStack>
         </Box>
       ))}

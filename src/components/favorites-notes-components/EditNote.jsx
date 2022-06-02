@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import {
   Text, Modal, Button, Textarea, useDisclosure,
-  ModalOverlay, ModalHeader, ModalContent, ModalCloseButton, ModalBody, ModalFooter,
+  ModalOverlay, ModalHeader, ModalContent, ModalCloseButton, ModalBody, ModalFooter, Icon, HStack,
 } from '@chakra-ui/react';
+import { AiOutlineEdit } from 'react-icons/ai';
 
 import axios from 'axios';
 
@@ -54,8 +55,8 @@ function CreateNote({ coffeeId, coffeeName }) {
 
   return (
     <div>
-      <Button onClick={() => handleOpen()}>Edit Note</Button>
-      <Modal onClose={onClose} size="lg" isOpen={isOpen}>
+      <Button id="edit-btn" p={0} bg="transparent" onClick={() => handleOpen()}><Icon ml={2} mt={2} as={AiOutlineEdit} /></Button>
+      <Modal isCentered onClose={onClose} size="md" isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>
@@ -80,12 +81,14 @@ function CreateNote({ coffeeId, coffeeName }) {
             </Text>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={saveChanges}>Save Changes</Button>
-            <DeleteModal
-              coffeeId={coffeeId}
-              setNotesContent={setNotesContent}
-              onParentModalClose={onClose}
-            />
+            <HStack>
+              <Button onClick={saveChanges}>Save Changes</Button>
+              <DeleteModal
+                coffeeId={coffeeId}
+                setNotesContent={setNotesContent}
+                onParentModalClose={onClose}
+              />
+            </HStack>
           </ModalFooter>
         </ModalContent>
       </Modal>
