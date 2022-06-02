@@ -246,6 +246,7 @@ body {
 .coffee-component-col {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 }
 .title-coffee {
   justify-content: flex-start;
@@ -253,22 +254,29 @@ body {
 }
 
 .temperature-img {
-  max-width: 4vh;
+  width: 6vh;
+  height: 6vh;
   image-rendering: -webkit-optimize-contrast;
+  padding: 1vh;
+  border-radius: 5px;
 }
 
 .temperature-btn {
-  width: 6vh;
-  height: 6vh;
-  padding: 3vh 2vh;
-  background-color: transparent !important;
+  display: none !important;
 }
-.temperature-btn:hover {
+.temperature-img:hover {
   background-color: #f3eed9 !important;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+  border: 3px solid #3d1618;
 }
-.temperature-btn:focus {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+.temperature-btn:checked img {
+  background-color: #f3eed9 !important;
+}
+
+#radio-box-temperature {
+  display: flex;
+  justify-content: space-around;
+  gap: 10vh;
 }
 
 .sub-heading-1 {
@@ -459,7 +467,7 @@ body {
 .component-coffee-title {
   font-size: 1em;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start !important;
   font-weight: 600;
   align-items: center;
 }
@@ -492,7 +500,7 @@ body {
   background-color: #441c1e !important;
 }
 
-.chakra-radio__input:checked ~ .chakra-radio__label img {
+.chakra-radio__input:checked ~ .chakra-radio__label .sugar-cube {
   background-color: #441c1e !important;
 }
 
@@ -510,7 +518,7 @@ body {
   border-radius: 50%;
   width: 5vh;
   height: 5vh;
-  bottom: 10vh;
+  bottom: 8vh;
   background-color: #d5a454;
   color: #f3eed9;
   z-index: 2;
@@ -602,4 +610,9 @@ body {
   justify-content: center;
   margin-right: 2vh;
   margin-bottom: 1vh;
+}
+
+.chakra-radio__input:checked ~ .chakra-radio__label .temperature-img {
+  background-color: #f3eed9 !important;
+  border: 3px solid #3d1618;
 }

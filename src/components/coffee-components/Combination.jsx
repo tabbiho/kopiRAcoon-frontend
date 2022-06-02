@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
-  Button, Box, Grid, GridItem, Checkbox, VStack,
+  Box, Grid, GridItem, Checkbox, VStack,
   Radio, RadioGroup,
 } from '@chakra-ui/react';
 import AppContext from '../../functions.jsx';
@@ -12,7 +12,8 @@ function Combination() {
   const {
     UPDATE_DIAGRAM_ICE, UPDATE_DIAGRAM_SUGAR, UPDATE_DIAGRAM_MILK, SET_FAVORITE,
   } = keywords;
-  const [value, setValue] = React.useState('1');
+  const [value, setValue] = useState('Regular');
+  const [temperatureValue, setTemperatureValue] = useState('hot');
 
   return (
     <Box>
@@ -21,42 +22,49 @@ function Combination() {
         templateColumns="repeat(8, 1fr)"
         gap={2}
       >
-        <GridItem rowSpan={1} colSpan={2} className="coffee-component-col">
+        <GridItem justifyContent="flex-start" rowSpan={1} colSpan={2} className="coffee-component-col">
           <Box className="component-coffee-title title-coffee">
             {t('temperature')}
           </Box>
         </GridItem>
-        <GridItem rowSpan={1} colSpan={6} className="coffee-component-col temperature-component-row">
-          <VStack>
-            <Button
-              onClick={() => {
-                dispatch({ type: SET_FAVORITE, payload: false });
-                dispatch({ type: UPDATE_DIAGRAM_ICE, payload: false }); }}
-              className="temperature-btn  hot-img"
-            >
-              <div>
+
+        <GridItem justifyContent="space-around" rowSpan={1} colSpan={6} className="coffee-component-col temperature-component-row">
+          <RadioGroup
+            onChange={setTemperatureValue}
+            value={temperatureValue}
+            id="radio-box-temperature"
+          >
+            <VStack>
+              <Radio
+                onChange={() => {
+                  dispatch({ type: SET_FAVORITE, payload: false });
+                  dispatch({ type: UPDATE_DIAGRAM_ICE, payload: false }); }}
+                className="temperature-btn hot-img"
+                value="hot"
+                id="hot-btn"
+              >
                 <img src="../../images/logo-icon/hot.png" alt="sugar-cube" className="temperature-img" />
-              </div>
-            </Button>
-            <div>
-              {t('hot')}
-            </div>
-          </VStack>
-          <VStack>
-            <Button
-              onClick={() => {
-                dispatch({ type: SET_FAVORITE, payload: false });
-                dispatch({ type: UPDATE_DIAGRAM_ICE, payload: true }); }}
-              className="temperature-btn cold-img"
-            >
-              <div>
-                <img src="../../images/logo-icon/ice.png" alt="sugar-cube" className="temperature-img " />
-              </div>
-            </Button>
-            <div>
-              {t('cold')}
-            </div>
-          </VStack>
+              </Radio>
+              <label htmlFor="hot-btn">
+                {t('hot')}
+              </label>
+            </VStack>
+            <VStack>
+              <Radio
+                onChange={() => {
+                  dispatch({ type: SET_FAVORITE, payload: false });
+                  dispatch({ type: UPDATE_DIAGRAM_ICE, payload: true }); }}
+                className="temperature-btn cold-img"
+                id="cold-btn"
+                value="ice"
+              >
+                <img src="../../images/logo-icon/ice.png" alt="sugar-cube" className="temperature-img" />
+              </Radio>
+              <label htmlFor="cold-btn">
+                {t('cold')}
+              </label>
+            </VStack>
+          </RadioGroup>
         </GridItem>
         {/* SUGAR COMPONENT */}
         <GridItem rowSpan={1} colSpan={2} className="coffee-component-col title-coffee">
