@@ -35,7 +35,6 @@ function CoffeeDiagramMain() {
       opacity: 1,
       transition: {
         type: 'tween',
-        delay: 0.4,
         when: 'beforeChildren',
         duration: 0.4,
       },
@@ -51,10 +50,7 @@ function CoffeeDiagramMain() {
       x: 0,
       opacity: 1,
       delay: 0.4,
-      staggerChildren: 0.2,
-      transition: {
-        delay: 1,
-      },
+      staggerChildren: 0.3,
     },
   };
   const iceVariant = {

@@ -24,7 +24,7 @@ function SaveToFave() {
 
   useEffect(() => {
     // if favourite is true, do a post request to backend to save favorite
-    if (appState.favorite) {
+    if (favoritesClicked) {
       const postFavoriteReq = async () => {
         try {
           // eslint-disable-next-line no-unused-vars
@@ -48,8 +48,8 @@ function SaveToFave() {
     deleteFavoriteReq();
   }, [favoritesClicked]);
   return (
-    <Box id="favorites-box">
 
+    <Box id="favorites-box">
       <Button
         animate={{ rotate: [360, 180, 0, 180, 360] }}
         transition={{ duration: 2 }}
@@ -62,6 +62,7 @@ function SaveToFave() {
         <Icon as={AiOutlineStar} id="star-btn" />
       </Button>
     </Box>
+
   );
 }
 
