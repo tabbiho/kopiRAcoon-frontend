@@ -19,7 +19,7 @@ function MakeCoffee() {
       setIsLoggedIn(loginResult.data);
     };
     loginCheck();
-  });
+  }, []);
 
   return (
     <Container className="main-container-wrapper" maxWidth="410px">
