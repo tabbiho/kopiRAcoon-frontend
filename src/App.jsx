@@ -22,7 +22,7 @@ axios.defaults.withCredentials = true;
 
 function App() {
   // const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
-  const BACKEND_URL = 'https://kopiracoon.herokuapp.com/';
+  const BACKEND_URL = 'https://kopiracoon.herokuapp.com';
   const { t } = useTranslation();
 
   const initialAppState = {
