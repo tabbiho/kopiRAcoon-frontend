@@ -33,7 +33,7 @@ function MakeCoffee() {
         <Translation />
       </Box>
       <NavBar />
-      {!isLoggedIn && (<Navigate to="/login" replace />)}
+      {/* {!isLoggedIn && (<Navigate to="/login" replace />)} */}
     </Container>
   );
 }
