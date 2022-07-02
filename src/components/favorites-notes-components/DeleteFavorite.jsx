@@ -10,8 +10,11 @@ import {
 } from '@chakra-ui/react';
 import AppContext from '../../functions.jsx';
 
+axios.defaults.withCredentials = true;
+
 function DeleteFavorite({ coffeeId }) {
   const { BACKEND_URL } = useContext(AppContext);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
 

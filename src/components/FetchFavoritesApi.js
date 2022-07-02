@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
+const BACKEND_URL = 'https://kopiracoon.herokuapp.com';
+// const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
 
 const findFavorites = () => axios.get(`${BACKEND_URL}/allFavorites`)
   .then((result) => result.data.allCoffeeData);

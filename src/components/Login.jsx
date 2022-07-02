@@ -14,6 +14,7 @@ function Login() {
   useEffect(() => {
     const loginCheck = async () => {
       const loginResult = await axios.get(`${BACKEND_URL}/users/loginCheck`);
+      console.log(loginResult);
       setIsLoggedIn(loginResult.data);
     };
     loginCheck();

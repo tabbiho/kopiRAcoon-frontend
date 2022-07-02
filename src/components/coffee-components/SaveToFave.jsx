@@ -8,6 +8,8 @@ import { Icon, Button, Box } from '@chakra-ui/react';
 import axios from 'axios';
 import AppContext from '../../functions.jsx';
 
+axios.defaults.withCredentials = true;
+
 function SaveToFave() {
   const [favoritesClicked, setFavoritesStatus] = useState(false);
   const {

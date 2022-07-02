@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   useDisclosure, AlertDialog, AlertDialogContent, AlertDialogOverlay,
   AlertDialogHeader, AlertDialogBody, AlertDialogFooter, Button,
 } from '@chakra-ui/react';
 
 import axios from 'axios';
+import AppContext from '../../functions.jsx';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
 axios.defaults.withCredentials = true;
+// const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
 
 function DeleteModal({ coffeeId, setNotesContent, onParentModalClose }) {
+  const { BACKEND_URL } = useContext(AppContext);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
   const handleConfirmDelete = () => {

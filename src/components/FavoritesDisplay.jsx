@@ -14,6 +14,7 @@ function FavoritesDisplay() {
   const resource = createResource();
   const [favoritesList, setFavoritesList] = useState([]);
   const { BACKEND_URL } = useContext(AppContext);
+  axios.defaults.withCredentials = true;
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 

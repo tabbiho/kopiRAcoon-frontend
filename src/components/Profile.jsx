@@ -7,6 +7,8 @@ import {
 import AppContext from '../functions.jsx';
 import NavBar from './NavBar.jsx';
 
+axios.defaults.withCredentials = true;
+
 function Profile() {
   const [passwordDetails, setPasswordDetails] = useState({
     currentPassword: '', newPassword: '', confirmPassword: '', error: false, success: false,

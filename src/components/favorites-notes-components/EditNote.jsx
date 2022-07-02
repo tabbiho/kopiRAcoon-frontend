@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Text, Modal, Button, Textarea, useDisclosure,
   ModalOverlay, ModalHeader, ModalContent, ModalCloseButton, ModalBody, ModalFooter, Icon, HStack,
 } from '@chakra-ui/react';
 import { AiOutlineEdit } from 'react-icons/ai';
-
 import axios from 'axios';
+import AppContext from '../../functions.jsx';
 
 import DeleteModal from './DeleteModal.jsx';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
-axios.defaults.withCredentials = true;
+// const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3004';
 
 function CreateNote({ coffeeId, coffeeName }) {
+  axios.defaults.withCredentials = true;
+  const { BACKEND_URL } = useContext(AppContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [notesContent, setNotesContent] = useState('');
   const CHARACTER_LIMIT = '50';
