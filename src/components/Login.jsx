@@ -66,7 +66,7 @@ function Login() {
         {' '}
         <Link to="/register" id="here-link">here</Link>
       </Box>
-      {isLoggedIn && (<Navigate to="/makeCoffee" replace />)}
+      {isLoggedIn && (<Navigate to="/makeCoffee" />)}
     </Container>
   );
 }

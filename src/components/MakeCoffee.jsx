@@ -16,10 +16,11 @@ function MakeCoffee() {
   useEffect(() => {
     const loginCheck = async () => {
       const loginResult = await axios.get(`${BACKEND_URL}/users/loginCheck`);
+      console.log(loginResult, 'login');
       setIsLoggedIn(loginResult.data);
     };
     loginCheck();
-  }, []);
+  });
 
   return (
     <Container className="main-container-wrapper" maxWidth="410px">
@@ -33,7 +34,7 @@ function MakeCoffee() {
         <Translation />
       </Box>
       <NavBar />
-      {/* {!isLoggedIn && (<Navigate to="/login" replace />)} */}
+      {!isLoggedIn && (<Navigate to="/login" replace />)}
     </Container>
   );
 }
