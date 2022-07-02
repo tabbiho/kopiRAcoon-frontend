@@ -7,6 +7,8 @@ Deployed link can be found at: https://kopiracoon.netlify.app/login
 ## Installation 
 For the project to run locally on your machine: 
 1. <code>npm install</code> to install necessary packages 
+2. <code>npm run start </code> to run the Create React App locally 
+3. Open browser and view the project on http://localhost:3000 
 
 ## Walkthrough 
 <h4> 1. User login </h4>
