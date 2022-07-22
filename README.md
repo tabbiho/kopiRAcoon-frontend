@@ -23,7 +23,7 @@ For the project to run locally on your machine:
 
 <h4> 3. Map </h4>
 <p> Incorporated the use of Google Map to help users find nearby coffee drinking spot </p>
-<img src='https://user-images.githubusercontent.com/94110588/176999752-7b1180e9-dbc1-4f80-9adc-3eb72de13802.png' alt='form' width='300'/>
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/90788379/180371175-b830f932-5616-4b7c-89ee-011ddcb670b3.png">
 
 <h4> 4. Favorites </h4>
 <p> Users can store their some of their favorites and view them easily  </p>
