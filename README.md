@@ -10,6 +10,8 @@ For the project to run locally on your machine:
 2. <code>npm run start </code> to run the Create React App locally 
 3. Open browser and view the project on http://localhost:3000 
 
+> **Note: This is the frontend repo. The backend repo can be viewed [here](https://github.com/cheenaeng/back-end-RA-bootcamp-project5).**
+
 ## Walkthrough 
 <h4> 1. User login </h4>
 <img src='https://user-images.githubusercontent.com/94110588/176999600-e1336e22-6ff9-42b0-bc1b-83ccdc9498aa.png' alt='login page' width='300'/>
